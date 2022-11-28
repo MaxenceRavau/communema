@@ -10,9 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_130827) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_133358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendees", force: :cascade do |t|
+    t.bigint "sharing_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sharing_id"], name: "index_attendees_on_sharing_id"
+    t.index ["user_id"], name: "index_attendees_on_user_id"
+  end
+
+  create_table "cinemas", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "brand"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "follower_id_id", null: false
+    t.bigint "followee_id_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followee_id_id"], name: "index_follows_on_followee_id_id"
+    t.index ["follower_id_id"], name: "index_follows_on_follower_id_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "sharing_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sharing_id"], name: "index_messages_on_sharing_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.text "synopsis"
+    t.string "genre"
+    t.integer "release_date"
+    t.integer "duration"
+    t.string "director"
+    t.float "market_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.float "rating"
+    t.text "comment"
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "hall"
+    t.time "start_at"
+    t.bigint "cinema_id", null: false
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_id"], name: "index_sessions_on_cinema_id"
+    t.index ["movie_id"], name: "index_sessions_on_movie_id"
+  end
+
+  create_table "sharings", force: :cascade do |t|
+    t.text "description"
+    t.boolean "cancelled"
+    t.bigint "session_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_sharings_on_session_id"
+    t.index ["user_id"], name: "index_sharings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +105,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_130827) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendees", "sharings"
+  add_foreign_key "attendees", "users"
+  add_foreign_key "follows", "users", column: "followee_id_id"
+  add_foreign_key "follows", "users", column: "follower_id_id"
+  add_foreign_key "messages", "sharings"
+  add_foreign_key "messages", "users"
+  add_foreign_key "reviews", "movies"
+  add_foreign_key "sessions", "cinemas"
+  add_foreign_key "sessions", "movies"
+  add_foreign_key "sharings", "sessions"
+  add_foreign_key "sharings", "users"
 end
