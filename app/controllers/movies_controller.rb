@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show]
 
   def index
-    @movies = policy_scope(Movie)
+    @movies = policy_scope(Movie).all
   end
 
   def show

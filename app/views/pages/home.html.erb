@@ -1,10 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h2>Movies:</h2>
 
 
+    <% @movies.each do |movie| %>
 
-<ul>
-<% @movies.each do |movie| %>
-<%= movie.title%>
-<% end %>
-</ul>
+    <p><strong>Title: </strong><%= movie.title%></p>
+    <p><strong>Synopsis: </strong><%= movie.synopsis%></p>
+    <p><strong>Genre: </strong><%= movie.genre%></p>
+    <p><strong>Release date: </strong><%= movie.release_date%></p>
+    <p><strong>Duration: </strong><%= movie.duration%></p>
+    <p><strong>Director: </strong><%= movie.director%></p>
+    <p><strong>Rating: </strong><%= movie.market_rating%></p>
+
+    <% end %>
