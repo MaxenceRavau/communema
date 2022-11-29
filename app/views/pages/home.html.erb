@@ -1,19 +1,31 @@
 
 <%= render "shared/navbar" %>
 
-<h2>Movies:</h2>
+  <div class="home-title d-flex justify-content-between">
+  <h2>Suggestions</h2>
+  <h2>Sorties semaine</h2>
+  </div>
 
+  <div class="container">
+      <% @movies.each do |movie| %>
+      <div class="movie-card d-flex justify-content-between">
+        <div class="movie-image">
+        </div>
+        <div class="movie-details">
+          <p><%= movie.title%></p>
+          <p><%= movie.release_date%></p>
+          <p><%= movie.duration%> minutes</p>
+          <p><%= movie.director%></p>
+          <p><%= movie.genre%></p>
+          <p><strong>Rating: </strong><%= movie.market_rating%></p>
+          <p class="btn-blue">choisir ce film</p>
+        </div>
 
-    <% @movies.each do |movie| %>
+        </div>
 
-    <p><strong>Title: </strong><%= movie.title%></p>
-    <p><strong>Synopsis: </strong><%= movie.synopsis%></p>
-    <p><strong>Genre: </strong><%= movie.genre%></p>
-    <p><strong>Release date: </strong><%= movie.release_date%></p>
-    <p><strong>Duration: </strong><%= movie.duration%></p>
-    <p><strong>Director: </strong><%= movie.director%></p>
-    <p><strong>Rating: </strong><%= movie.market_rating%></p>
+      <% end %>
+      </div>
 
-    <% end %>
+  </div>
 
 <%= render "pages/footbar" %>
