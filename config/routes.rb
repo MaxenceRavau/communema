@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-  resources :folloew, only: [:new, :create]
+  resources :follower, only: [:new, :create]
 
 end
