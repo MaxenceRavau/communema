@@ -14,9 +14,10 @@
   background-color: white;
   margin: 5px;
   border-radius: 10px;
-  padding: 20px;
   margin-bottom: 20px;
   box-shadow: 2px 3px 15px -5px rgba(0,0,0,0.54);
+  min-height: 200px;
+  position: relative;
 }
 
 .movie-card:hover{}
@@ -59,6 +60,7 @@
 
 .movie-details{
   padding: 10px;
+  width: 100%;
 }
 
 .detail-infos{
@@ -76,8 +78,13 @@ a{
   background-color: green;
   color: white;
   border-radius: 10px;
-  width: 70px;
   text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  position: absolute;
+  right: auto;
+  bottom: 12px;
+  width: auto;
 }
 
 
@@ -86,6 +93,7 @@ a{
   margin-bottom: 2px;
   text-decoration: none;
   color: rgb(68, 68, 68);
+  font-size: 15px;
 }
 
 .suggestion-bar{
@@ -100,4 +108,27 @@ input[type="radio"]{
 
 input[type="radio"]:checked{
   display: none !important;
+}
+
+.movie-image img {
+  height: 100%;
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  width: auto;
+  max-width: 130px;
+}
+
+#market-rating{
+  position: absolute;
+  bottom: 17px;
+  right: 37px;
+}
+
+#details-date-duration{
+  position: absolute;
+  bottom: 56px;
+  right: 147px;
 }
