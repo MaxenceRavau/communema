@@ -16,10 +16,12 @@
   <div class="container" data-target="">
       <% @movies.each do |movie| %>
       <%= link_to movie_path(movie) do %>
+
        <div class="movie-card d-flex justify-content-between">
          <div class="movie-image">
           <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
           </div>
+         
         <div class="movie-details">
           <h3 class="movie-title"><%= movie.title%></h3>
           <div id="details-date-duration">
