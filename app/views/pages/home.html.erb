@@ -8,7 +8,7 @@
 
   <div class="container">
       <% @movies.each do |movie| %>
-  
+      <%= link_to movie_path(movie) do %>
       <div class="movie-card d-flex justify-content-between">
         <div class="movie-image">
         </div>
@@ -19,11 +19,10 @@
           <p><%= movie.director%></p>
           <p class="genre-tag"><%= movie.genre%></p>
           <p><strong>Rating: </strong><%= movie.market_rating%></p>
-          <p class="btn-blue">choisir ce film</p>
         </div>
 
         </div>
-
+      <% end %>
       <% end %>
       </div>
 
