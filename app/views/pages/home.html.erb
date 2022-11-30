@@ -1,2 +1,32 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<%= render "shared/navbar" %>
+
+  <div class="home-title d-flex justify-content-between">
+  <h2>Suggestions</h2>
+  <h2>Sorties semaine</h2>
+  </div>
+
+  <div class="container">
+      <% @movies.each do |movie| %>
+  
+      <div class="movie-card d-flex justify-content-between">
+        <div class="movie-image">
+        </div>
+        <div class="movie-details">
+          <p class="movie-title"><%= movie.title%></p>
+          <p><%= movie.release_date%></p>
+          <p><%= movie.duration%> min</p>
+          <p><%= movie.director%></p>
+          <p class="genre-tag"><%= movie.genre%></p>
+          <p><strong>Rating: </strong><%= movie.market_rating%></p>
+          <p class="btn-blue">choisir ce film</p>
+        </div>
+
+        </div>
+
+      <% end %>
+      </div>
+
+  </div>
+
+<%= render "pages/footbar" %>

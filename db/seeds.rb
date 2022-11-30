@@ -70,7 +70,15 @@ cinemas = Cinema.all # à voir si on le fait pas sur une sélection de cinémas 
 cinemas.each do |cinema|
   movies.each do |movie|
     session_plannings.sample.each do |starting_time|
-      Session.create(movie: movie, cinema: cinema, start_at: starting_time)
+      Session.create(movie_id: movie.id, cinema_id: cinema.id, start_at: starting_time)
     end
   end
 end
+
+bob = User.create!(email: "bob@mail.com", password: '123456', first_name: 'Bob')
+
+mark = User.create!(email: "mark@mail.com", password: '123456', first_name: 'Mark')
+nico = User.create!(email: "nico@mail.com", password: '123456', first_name: 'Nico')
+
+Follow.create!(follower: bob, followee: mark)
+Follow.create!(follower: bob, followee: nico)

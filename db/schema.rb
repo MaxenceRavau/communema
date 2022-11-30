@@ -60,12 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_132846) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.bigint "follower_id_id", null: false
-    t.bigint "followee_id_id", null: false
+    t.bigint "follower_id", null: false
+    t.bigint "followee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["followee_id_id"], name: "index_follows_on_followee_id_id"
-    t.index ["follower_id_id"], name: "index_follows_on_follower_id_id"
+    t.index ["followee_id"], name: "index_follows_on_followee_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -140,8 +140,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_132846) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attendees", "sharings"
   add_foreign_key "attendees", "users"
-  add_foreign_key "follows", "users", column: "followee_id_id"
-  add_foreign_key "follows", "users", column: "follower_id_id"
+  add_foreign_key "follows", "users", column: "followee_id"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "messages", "sharings"
   add_foreign_key "messages", "users"
   add_foreign_key "reviews", "movies"

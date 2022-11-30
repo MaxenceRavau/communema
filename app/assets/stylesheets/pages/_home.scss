@@ -1,1 +1,64 @@
 // Specific CSS for your home-page
+
+
+.home-title{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  color: #050280;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.movie-card{
+  background-color: white;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 2px 3px 15px -5px rgba(0,0,0,0.54);
+}
+
+.btn-blue{
+  background-color: #050280;
+  color:white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.movie-image{
+  margin-right: 10px;
+}
+
+
+h2{
+  font-size: 20px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.movie-title{
+  font-size: 20px;
+  font-weight:bold;
+}
+
+.movie-details{
+  padding: 10px;
+}
+
+.detail-infos{
+  height: 100px;
+}
+
+.movie-details p{
+  margin-bottom: 0.5px;
+}
+
+.genre-tag{
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  width: 70px;
+  text-align: center;
+}
