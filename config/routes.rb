@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :create, :new]
   end
 
-  resources :sharings, except: [:destroy] do
+  resources :sessions, only: [] do
+    resources :sharings, only: [:new, :create]
+  end
+
+  resources :sharings, only: [:index, :update] do
     resources :messages, only: [:index, :create, :new]
     resources :attendees, only: [:create, :new, :destroy]
   end
