@@ -14,10 +14,26 @@
   background-color: white;
   margin: 5px;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 20px;
   box-shadow: 2px 3px 15px -5px rgba(0,0,0,0.54);
 }
+
+.movie-card:hover{}
+
+.suggestion-bar{
+  font-size: 22px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.sorties-semaine-bar{
+  font-size: 22px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.suggestion-bar:target{color: black;}
 
 .btn-blue{
   background-color: #050280;
@@ -32,15 +48,13 @@
 }
 
 
-h2{
-  font-size: 20px;
-  margin-right: 15px;
-  margin-left: 15px;
-}
+
 
 .movie-title{
-  font-size: 20px;
+  font-size: 25px;
   font-weight:bold;
+  color: black;
+  margin-bottom: 5px;
 }
 
 .movie-details{
@@ -51,14 +65,39 @@ h2{
   height: 100px;
 }
 
-.movie-details p{
-  margin-bottom: 0.5px;
+
+
+a{
+  text-decoration: none;
+  color: black;
 }
 
-.genre-tag{
+#genre-tag{
   background-color: green;
   color: white;
   border-radius: 10px;
   width: 70px;
   text-align: center;
+}
+
+
+
+.movie-details p{
+  margin-bottom: 2px;
+  text-decoration: none;
+  color: rgb(68, 68, 68);
+}
+
+.suggestion-bar{
+
+}
+
+
+input[type="radio"]{
+  background: red;
+  display: block !important;
+}
+
+input[type="radio"]:checked{
+  display: none !important;
 }

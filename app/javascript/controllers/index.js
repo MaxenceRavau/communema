@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import HomePageSelectionController from "./home_page_selection_controller"
+application.register("home-page-selection", HomePageSelectionController)
