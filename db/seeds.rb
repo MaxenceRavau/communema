@@ -1,14 +1,15 @@
 Cinema.destroy_all
 User.destroy_all
 Movie.destroy_all
+Follow.destroy_all
+
+require "json"
 
 # ---- Users ----
 
 hamza = User.create(first_name: "Hamza", last_name:"Triqui", email:"test@g.com", password:"123456")
 hamza.save
 puts "destroying..."
-
-require "json"
 
 # ---- Parsing des salles de cine en Ile de France ----
 
@@ -74,11 +75,3 @@ cinemas.each do |cinema|
     end
   end
 end
-
-bob = User.create!(email: "bob@mail.com", password: '123456', first_name: 'Bob')
-
-mark = User.create!(email: "mark@mail.com", password: '123456', first_name: 'Mark')
-nico = User.create!(email: "nico@mail.com", password: '123456', first_name: 'Nico')
-
-Follow.create!(follower: bob, followee: mark)
-Follow.create!(follower: bob, followee: nico)
