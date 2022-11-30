@@ -11,3 +11,11 @@
 @avatar = Movie.create(title: "avatar", synopsis: "blue guys", genre: "action", release_date: 2009, duration: 120, director: "James Cameron", market_rating: 4)
 
 puts "seed is done"
+
+bob = User.create!(email: "bob@mail.com", password: '123456', first_name: 'Bob')
+
+mark = User.create!(email: "mark@mail.com", password: '123456', first_name: 'Mark')
+nico = User.create!(email: "nico@mail.com", password: '123456', first_name: 'Nico')
+
+Follow.create!(follower: bob, followee: mark)
+Follow.create!(follower: bob, followee: nico)

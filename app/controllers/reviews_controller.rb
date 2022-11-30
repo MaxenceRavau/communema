@@ -1,9 +1,7 @@
 class ReviewsController < ApplicationController
-  def index
-    @reviews = policy_scope(Review).all
-  end
 
   def new
+    @movie = Movie.find(params[:movie_id])
     @review = Review.new
     authorize @review
   end
