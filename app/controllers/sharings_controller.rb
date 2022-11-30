@@ -1,8 +1,8 @@
 class SharingsController < ApplicationController
-  before_action :set_sharing
 
   def index
-    @sharings = policy_scope(Sharing).all
+    @sharings = policy_scope(current_user.sharings)
+    followed_users_sharings = Sharing.where(user: current_user.followed_users)
   end
 
   def new
@@ -28,8 +28,5 @@ class SharingsController < ApplicationController
     params.require(:sharing).permit(:description, :cancelled?)
   end
 
-  def set_sharing
-    @sharing = Sharing.find(params[:id])
-  end
 
 end
