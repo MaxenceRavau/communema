@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import HomePageSelectionController from "./home_page_selection_controller"
 application.register("home-page-selection", HomePageSelectionController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)

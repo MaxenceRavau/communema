@@ -1,5 +1,7 @@
 
 
+<%= render "shared/navbar" %>
+
   <div class="container">
     <div class="movie-card">
       <div class="d-flex justify-content-between">
@@ -18,6 +20,11 @@
           <%= @movie.synopsis %>
         </div>
     </div>
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
 </div>
 
 <%= render "pages/footbar" %>
