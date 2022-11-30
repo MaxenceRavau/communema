@@ -63,6 +63,7 @@ Rails.application.configure do
   config.hosts.clear
   config.hosts << /[a-z0-9-.]+\.eu\.ngrok\.io/
   config.hosts << "localhost"
+  config.hosts << "[::1]"
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
