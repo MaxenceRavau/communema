@@ -1,24 +1,31 @@
 
 <%= render "shared/navbar" %>
 
+<div data-controller="home-page-selection">
   <div class="home-title d-flex justify-content-between">
-  <h2>Suggestions</h2>
-  <h2>Sorties semaine</h2>
+    <label for="" data-action="click->home-page-selection#updateContent">
+      <input data-home-page-selection-target="movieSuggestion" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden">
+      <h2 class="suggestion-bar">Suggestions</h2>
+    </label>
+    <label for="" data-action="click->home-page-selection#updateContent">
+    <input data-home-page-selection-target="movieSorties" type="radio" id="huey" name="menu-title" value="huey" class="hidden">
+      <h2 class="sorties-semaine-bar">Sorties semaine</h2>
+    </label>
   </div>
 
-  <div class="container">
+  <div class="container" data-target="">
       <% @movies.each do |movie| %>
       <%= link_to movie_path(movie) do %>
       <div class="movie-card d-flex justify-content-between">
         <div class="movie-image">
         </div>
         <div class="movie-details">
-          <p class="movie-title"><%= movie.title%></p>
+          <h3 class="movie-title"><%= movie.title%></h3>
           <p><%= movie.release_date%></p>
           <p><%= movie.duration%> min</p>
           <p><%= movie.director%></p>
-          <p class="genre-tag"><%= movie.genre%></p>
-          <p><strong>Rating: </strong><%= movie.market_rating%></p>
+          <p><%= movie.market_rating%></p>
+          <p id="genre-tag"><%= movie.genre%></p>
         </div>
 
         </div>
@@ -26,6 +33,7 @@
       <% end %>
       </div>
 
+  </div>
   </div>
 
 <%= render "pages/footbar" %>
