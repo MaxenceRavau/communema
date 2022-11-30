@@ -25,5 +25,4 @@ class ImportMovie
     new_movie.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
     new_movie.save
   end
-
 end
