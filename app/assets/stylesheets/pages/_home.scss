@@ -20,21 +20,6 @@
   position: relative;
 }
 
-.movie-card:hover{}
-
-.suggestion-bar{
-  font-size: 22px;
-  margin-right: 15px;
-  margin-left: 15px;
-}
-
-.sorties-semaine-bar{
-  font-size: 22px;
-  margin-right: 15px;
-  margin-left: 15px;
-}
-
-.suggestion-bar:target{color: black;}
 
 .btn-blue{
   background-color: #050280;
@@ -96,19 +81,7 @@ a{
   font-size: 15px;
 }
 
-.suggestion-bar{
 
-}
-
-
-input[type="radio"]{
-  background: red;
-  display: block !important;
-}
-
-input[type="radio"]:checked{
-  display: none !important;
-}
 
 .movie-image img {
   height: 100%;
@@ -131,4 +104,34 @@ input[type="radio"]:checked{
   position: absolute;
   bottom: 56px;
   right: 147px;
+}
+
+.suggestion-bar{
+  font-size: 22px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.selected-movies-title{
+  text-decoration: underline;
+  font-weight: bold;
+  background-color: red;
+}
+
+.sorties-semaine-bar{
+  font-size: 22px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.suggestion-bar:target{color: black;}
+
+
+
+input[type="radio"]{
+  background: red;
+}
+
+input[type="radio"]:checked{
+
 }
