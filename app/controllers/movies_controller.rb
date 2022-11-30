@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
     @markers = @cinemas.geocoded.map do |cinema|
       {
         lat: cinema.latitude,
-        lng: cinema.longitude
+        lng: cinema.longitude,
       }
     end
   end
