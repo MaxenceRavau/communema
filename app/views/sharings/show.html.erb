@@ -1,11 +1,11 @@
 <div class="container chatroom">
-  <h1>#<%= @sharings.name %></h1>
+  <h1>#<%= @sharing.description %></h1>
 
   <div class="messages">
-    <% @chatroom.messages.each do |message| %>
+    <% @sharing.messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
-          <strong><%= message.user %></strong>
+          <strong><%= message.user.first_name %></strong>
           <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
         </small>
         <p><%= message.content %></p>
@@ -19,7 +19,7 @@
 %>
   <%= f.input :content,
     label: false,
-    placeholder: "Message ##{@sharing.name}",
+    placeholder: "Hello ta race",
     wrapper_html: {class: "flex-grow-1"}
   %>
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>

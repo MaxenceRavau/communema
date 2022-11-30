@@ -6,10 +6,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @sharing = Sharing.find(params[:chatroom_id])
+    @sharing = Sharing.find(params[:sharing_id])
     @message = Message.new(message_params)
     @message.sharing = @sharing
     @message.user = current_user
+    authorize @message
     if @message.save
       redirect_to sharing_path(@sharing)
     else
@@ -20,19 +21,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:comment)
+    params.require(:message).permit(:content)
   end
 end
-
-
-
-
-# @message = Message.new(message_params)
-# @message.sharing = @sharing
-# @message.user = current_user
-# authorize @message
-# if @message.save
-#   redirect_to messages_path
-# else
-#   render :new
-# end

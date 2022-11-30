@@ -23,7 +23,4 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-  resources :users, only: [:show]
-  resources :follower, only: [:new, :create]
-
 end

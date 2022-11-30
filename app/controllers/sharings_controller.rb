@@ -3,6 +3,7 @@ class SharingsController < ApplicationController
   def show
     @sharing = Sharing.find(params[:id])
     @message = Message.new
+    authorize @sharing
   end
 
   def index
