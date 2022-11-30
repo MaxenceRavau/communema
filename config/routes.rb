@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :attendees, only: [:create, :new, :destroy]
   end
 
+  resources :sharings, only: :show do
+    resources :messages, only: :create
+  end
+
   resources :users, only: [:show]
   resources :follower, only: [:new, :create]
 

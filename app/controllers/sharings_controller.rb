@@ -1,5 +1,10 @@
 class SharingsController < ApplicationController
 
+  def show
+    @sharing = Sharing.find(params[:id])
+    @message = Message.new
+  end
+
   def index
     @sharings = policy_scope(current_user.sharings)
     followed_users_sharings = Sharing.where(user: current_user.followed_users)
@@ -22,6 +27,4 @@ class SharingsController < ApplicationController
   def sharing_params
     params.require(:sharing).permit(:description, :cancelled?)
   end
-
-
 end
