@@ -5,20 +5,15 @@ class SharingsController < ApplicationController
     followed_users_sharings = Sharing.where(user: current_user.followed_users)
   end
 
-  def new
-    @sharing = Sharing.new
-    authorize @sharing
-  end
-
   def create
     @sharing = Sharing.new(sharing_params)
-    @sharing.movie = @movie
+    @sharing.session = params[session_id]
     @sharing.user = current_user
     authorize @sharing
     if @sharing.save
       redirect_to sharings_path
     else
-      render :new
+      redirect_to movie_path(@sharing.movie)
     end
   end
 

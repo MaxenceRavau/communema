@@ -7,6 +7,7 @@ puts "destroying..."
 
 require "json"
 
+
 # ---- Users ----
 
 bob = User.create!(email: "bob@mail.com", password: '123456', first_name: 'Bob', last_name: 'Kiffeur')
@@ -17,6 +18,7 @@ nico = User.create!(email: "nico@mail.com", password: '123456', first_name: 'Nic
 
 Follow.create!(follower: bob, followee: mark)
 Follow.create!(follower: bob, followee: nico)
+
 
 # ---- Parsing des salles de cine en Ile de France ----
 
