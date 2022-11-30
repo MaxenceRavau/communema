@@ -1,12 +1,18 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar-card{
+   background-color: #050280;
+   height: 80px;
+   color: white;
+   padding-left: 20px;
+   padding-top: 25px;
+   box-shadow: 2px 3px 15px -5px rgba(0,0,0,0.54);
+   margin-bottom: 10px;
+   position: sticky;
+   top:0px;
+   z-index: 3;
+
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+h1{
+  font-size: 40px;
+  font-family: 'Russo One', sans-serif;
 }
