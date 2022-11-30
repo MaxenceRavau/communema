@@ -7,6 +7,15 @@ class MoviesController < ApplicationController
 
   def show
     authorize @movie
+
+    @cinemas = @movie.cinemas
+
+    @markers = @cinemas.geocoded.map do |cinema|
+      {
+        lat: cinema.latitude,
+        lng: cinema.longitude
+      }
+    end
   end
 
   private

@@ -7,7 +7,6 @@ puts "destroying..."
 
 require "json"
 
-
 # ---- Users ----
 
 bob = User.create!(email: "bob@mail.com", password: '123456', first_name: 'Bob', last_name: 'Kiffeur')
