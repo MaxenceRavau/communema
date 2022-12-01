@@ -1,17 +1,19 @@
-<div class="container sharing sharing-chatroom"
+<div class="container chatroom sharing-chatroom"
   data-controller="sharing-subscription"
-  data-sharing-subscription-sharing-id-value="<%= @sharing.id %>">
+  data-sharing-subscription-sharing-id-value="<%= @sharing.id %>"
+  data-sharing-subscription-current-user-id-value="<%= current_user.id %>">
   <h1>#<%= @sharing.user.first_name %> : <%= @sharing.description %> </h1>
-
   <div class="messages" data-sharing-subscription-target="messages">
     <% @sharing.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "messages/message", message: message %>
+        </div>
+      </div>
     <% end %>
   </div>
 
-  <%= simple_form_for [@sharing, @message],
-    html: { data: { action: "turbo:submit-end->sharing-subscription#resetForm" }, class: "d-flex" } do |f|
-  %>
+  <%= simple_form_for [@sharing, @message], html: { data: { action: "turbo:submit-end->sharing-subscription#resetForm" }, class: "d-flex" } do |f| %>
 
     <%= f.input :content,
       label: false,
@@ -21,3 +23,10 @@
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>
+
+<%#
+  <div class="messages" data-sharing-subscription-target="messages">
+    <% @sharing.messages.each do |message| %>
+      <%# <%= render "messages/message", message: message %>
+    <%# <% end %>
+  <%# </div>  %>
