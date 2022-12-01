@@ -84,13 +84,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_112853) do
     t.string "title"
     t.text "synopsis"
     t.string "genre"
-    t.integer "release_date"
     t.integer "duration"
     t.string "director"
     t.float "market_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "tmdb_id"
+    t.date "release_date"
   end
 
   create_table "reviews", force: :cascade do |t|

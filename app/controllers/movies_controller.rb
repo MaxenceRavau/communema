@@ -3,7 +3,8 @@ class MoviesController < ApplicationController
 
   def index
     @movies = policy_scope(Movie).all
-    @top_rated_movies = Movie.top_rated
+    @top_rated_movies = @movies.top_rated
+    @sorties_semaine = @movies.sorties_semaine
   end
 
   def show
