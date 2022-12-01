@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_103745) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_095829) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,13 +84,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_103745) do
     t.string "title"
     t.text "synopsis"
     t.string "genre"
-    t.integer "release_date"
     t.integer "duration"
     t.string "director"
     t.float "market_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "tmdb_id"
+    t.date "release_date"
   end
 
   create_table "reviews", force: :cascade do |t|
