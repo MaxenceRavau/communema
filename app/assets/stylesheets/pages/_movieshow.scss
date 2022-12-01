@@ -8,9 +8,8 @@
 .movie-show-image img {
   height: 100%;
   width: 100%;
-  max-height: 200px;
+  max-height: 150px;
   object-fit: cover;
-  border-top-left-radius: 10px;
   width: auto;
   max-width: 130px;
 }
@@ -29,12 +28,11 @@
 
 .movie-card{
   background-color: white;
-  margin: 5px;
-  border-radius: 10px;
+  margin: 10px;
   margin-bottom: 20px;
-  box-shadow: 2px 3px 15px -5px rgba(0,0,0,0.54);
   min-height: 200px;
   position: relative;
+  border-bottom: solid lightgrey 3px;
 }
 
 
@@ -57,7 +55,9 @@
   font-size: 25px;
   font-weight:bold;
   color: black;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+
 }
 
 .movie-details{
@@ -78,13 +78,13 @@ a{
 
 #genre-tag{
   background-color: green;
+  font-size: 18px;
   color: white;
-  border-radius: 10px;
+  text-transform: lowercase;
+  border-radius: 5px;
   text-align: center;
   font-size: 15px;
   padding: 5px;
-  position: absolute;
-  right: auto;
   bottom: 12px;
   width: auto;
 }
@@ -96,6 +96,7 @@ a{
   text-decoration: none;
   color: rgb(68, 68, 68);
   font-size: 15px;
+
 }
 
 
@@ -105,23 +106,19 @@ a{
   width: 100%;
   max-height: 250px;
   object-fit: cover;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
   width: auto;
   max-width: 130px;
 }
 
 #market-rating{
-  position: absolute;
-  bottom: 17px;
-  right: 37px;
+  font-size: 18px;
 }
 
-#details-date-duration{
-  position: absolute;
-  bottom: 56px;
-  right: 147px;
-}
+// #details-date-duration{
+//   position: absolute;
+//   bottom: 56px;
+//   right: 147px;
+// }
 
 .suggestion-bar{
   font-size: 22px;
@@ -153,4 +150,8 @@ input[type="radio"]:checked{
 
 .hidden-div{
   display: none;
+}
+
+.group-text-movie{
+font-size: 18px;
 }

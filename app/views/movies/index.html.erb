@@ -19,22 +19,22 @@
       <%= link_to movie_path(movie) do %>
 
         <div class="movie-card d-flex justify-content-between">
-          <div class="movie-image">
-              <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
-          </div>
-
-          <div class="movie-details">
-            <h3 class="movie-title"><%= movie.title%></h3>
-            <div id="details-date-duration">
-            <p><%= movie.release_date%></p>
-            <p><%= movie.duration%> min</p>
-            <p><%= movie.director%></p>
-            </div>
-            <p id="market-rating"> <i class="fa-solid fa-star"></i> <%= movie.market_rating%></p>
-            <p id="genre-tag"><%= movie.genre%></p>
-          </div>
-
+         <div class="movie-image">
+           <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
         </div>
+        <div class="movie-details">
+           <div class="group-icon d-flex justify-content-between mt-2 mb-2 ml-1">
+              <p id="genre-tag"><%= movie.genre%></p>
+              <p id="market-rating"> <i class="fa-solid fa-star"></i> <%= movie.market_rating%></p>
+            </div>
+            <h3 class="movie-title"><%= movie.title%></h3>
+            <div class="group-text-movie d-flex justify-content-between">
+              <p><%= movie.release_date%></p>
+              <p><%= movie.duration%> min</p>
+            </div>
+         </div>
+        </div>
+
       <% end %>
       <% end %>
   </div>
