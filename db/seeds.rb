@@ -1,7 +1,7 @@
 Cinema.destroy_all
-Follow.destroy_all
 User.destroy_all
 Movie.destroy_all
+Follow.destroy_all
 
 puts "destroying..."
 
