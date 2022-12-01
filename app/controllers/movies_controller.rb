@@ -12,9 +12,11 @@ class MoviesController < ApplicationController
     @cinemas = @movie.cinemas
 
     @markers = @cinemas.geocoded.map do |cinema|
+      sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day)
       {
         lat: cinema.latitude,
         lng: cinema.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {cinema: cinema, movie: @movie, sessions: sessions, sharing: Sharing.new })
       }
     end
   end
