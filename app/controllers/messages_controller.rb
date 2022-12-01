@@ -12,7 +12,11 @@ class MessagesController < ApplicationController
     @message.user = current_user
     authorize @message
     if @message.save
-      redirect_to sharing_path(@sharing)
+      SharingChannel.broadcast_to(
+        @sharing,
+        render_to_string(partial: "message", locals: {message: @message})
+      )
+      head :ok
     else
       render "sharings/show", status: :unprocessable_entity
     end
