@@ -1,12 +1,42 @@
 <%= render "shared/navbar" %>
 
+  <div class="title d-flex m-3">
+    <h2 class="suggestion-bar">Mes séances</h2>
+    <h2 class="sorties-semaine-bar">Mes amis</h2>
+  </div>
+
+  <div class="container m-10">
+      <% @sharings.each do |sharing| %>
 
 
-<% @sharings.each do |sharing| %>
-<p>Share : <%=  sharing.description%></p>
-<% end %>
 
-<h1>Hello</h1>
+      <div class="sharing-card">
+
+        <div class="comment-title p-10">
+          <h1><%= sharing.description%></h1>
+        </div>
+
+        <div class="d-flex justify-content-between">
+
+
+            <div class="sharing-image">
+              <%= cl_image_tag sharing.movie.photo.key if sharing.movie.photo.attached?%>
+            </div>
+              <div id="sharing-details-date-duration" class="col">
+                <h4><%= sharing.movie.title %></h4>
+                <p><%= sharing.movie.release_date%></p>
+                <p><%= sharing.movie.duration%> min</p>
+                <p><%= sharing.movie.director%></p>
+              </div>
+              <div class="sharing-icon ">
+                <i class="fa-regular fa-heart p-2"></i>
+                <i class="fa-regular fa-comment"></i>
+                <i class="fa-solid fa-share"></i>
+              </div>
+          </div>
+        </div>
+        <% end %>
+  </div>
 
 
 
