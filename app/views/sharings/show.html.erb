@@ -1,29 +1,23 @@
-<div class="container sharing"
+<div class="container sharing sharing-chatroom"
   data-controller="sharing-subscription"
   data-sharing-subscription-sharing-id-value="<%= @sharing.id %>">
-  <h1>#<%= @sharing.user.first_name %></h1>
+  <h1>#<%= @sharing.user.first_name %> : <%= @sharing.description %> </h1>
 
   <div class="messages" data-sharing-subscription-target="messages">
+    <% @sharing.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
 
+  <%= simple_form_for [@sharing, @message],
+    html: { data: { action: "turbo:submit-end->sharing-subscription#resetForm" }, class: "d-flex" } do |f|
+  %>
 
-<div class="container sharing">
-  <h1>#<%= @sharing.description %></h1>
-
-  <div class="messages" data-sharing-subscription-target="messages">
-  <% @sharing.messages.each do |message| %>
-    <%= render "messages/message", message: message %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Hello there",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>
-
-
-<%= simple_form_for [@sharing, @message],
-  html: { data: { action: "turbo:submit-end->sharing-subscription#resetForm" }, class: "d-flex" } do |f|
-%>
-
-  <%= f.input :content,
-    label: false,
-    placeholder: "Hello there",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-<% end %>

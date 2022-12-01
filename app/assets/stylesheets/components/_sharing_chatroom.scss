@@ -1,0 +1,9 @@
+  .sharing-chatroom {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .messages {
+      flex-grow: 1;
+      overflow: scroll;
+    }
+  }
