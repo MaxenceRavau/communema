@@ -1,4 +1,3 @@
-
 <%= render "shared/navbar" %>
 
 <div data-controller="home-page-selection">
@@ -13,32 +12,52 @@
     </label>
   </div>
 
-  <div class="container" data-target="home-page-selection">
+  <div class="container suggestions" data-target="home-page-selection">
       <% @movies.each do |movie| %>
       <%= link_to movie_path(movie) do %>
-
-       <div class="movie-card d-flex justify-content-between">
-         <div class="movie-image">
-          <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
-          </div>
-         
-        <div class="movie-details">
+    <div class="movie-card d-flex justify-content-between">
+      <div class="movie-image">
+        <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
+      </div>
+      <div class="movie-details">
           <h3 class="movie-title"><%= movie.title%></h3>
           <div id="details-date-duration">
           <p><%= movie.release_date%></p>
           <p><%= movie.duration%> min</p>
           <p><%= movie.director%></p>
           </div>
-          <p id="market-rating"><%= movie.market_rating%></p>
+          <p id="market-rating"> <i class="fa-solid fa-star"></i> <%= movie.market_rating%></p>
           <p id="genre-tag"><%= movie.genre%></p>
-        </div>
-
-        </div>
-      <% end %>
-      <% end %>
       </div>
 
-  </div>
+    </div>
+    <% end %>
+    <% end %>
+    </div>
+
+  <div class="container sortiessemaine" data-target="home-page-selection">
+      <% @movies.each do |movie| %>
+      <%= link_to movie_path(movie) do %>
+    <div class="movie-card d-flex justify-content-between">
+      <div class="movie-image">
+        <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
+      </div>
+      <div class="movie-details">
+          <h3 class="movie-title"><%= movie.title%></h3>
+          <div id="details-date-duration">
+          <p><%= movie.release_date%></p>
+          <p><%= movie.duration%> min</p>
+          <p><%= movie.director%></p>
+          </div>
+          <p id="market-rating"> <i class="fa-solid fa-star"></i> <%= movie.market_rating%></p>
+          <p id="genre-tag"><%= movie.genre%></p>
+      </div>
+
+    </div>
+    <% end %>
+    <% end %>
+    </div>
+
   </div>
 
 <%= render "pages/footbar" %>

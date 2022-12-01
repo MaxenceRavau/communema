@@ -1,0 +1,70 @@
+
+<%= render "shared/navbar" %>
+
+<div data-controller="home-page-selection">
+  <div class="home-title d-flex justify-content-between">
+    <label class="selected-movies-title" data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
+      <input data-home-page-selction-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
+      <h2 class="suggestion-bar">Suggestions</h2>
+    </label>
+    <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
+    <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
+      <h2 class="sorties-semaine-bar">Sorties semaine</h2>
+    </label>
+  </div>
+
+  <div class="container" data-target="home-page-selection">
+      <% @top_rated_movies.each do |movie| %>
+      <%= link_to movie_path(movie) do %>
+
+        <div class="movie-card d-flex justify-content-between">
+         <div class="movie-image">
+            <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
+          </div>
+
+        <div class="movie-details">
+          <h3 class="movie-title"><%= movie.title%></h3>
+          <div id="details-date-duration">
+          <p><%= movie.release_date%></p>
+          <p><%= movie.duration%> min</p>
+          <p><%= movie.director%></p>
+          </div>
+          <p id="market-rating"> <i class="fa-solid fa-star"></i> <%= movie.market_rating%></p>
+          <p id="genre-tag"><%= movie.genre%></p>
+        </div>
+
+      </div>
+      <% end %>
+      <% end %>
+      </div>
+
+  </div>
+    <div class="container" data-target="home-page-selection">
+      <% @movies.each do |movie| %>
+      <%= link_to movie_path(movie) do %>
+
+        <div class="movie-card d-flex justify-content-between">
+         <div class="movie-image">
+            <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
+          </div>
+
+        <div class="movie-details">
+          <h3 class="movie-title"><%= movie.title%></h3>
+          <div id="details-date-duration">
+          <p><%= movie.release_date%></p>
+          <p><%= movie.duration%> min</p>
+          <p><%= movie.director%></p>
+          </div>
+          <p id="market-rating"> <i class="fa-solid fa-star"></i> <%= movie.market_rating%></p>
+          <p id="genre-tag"><%= movie.genre%></p>
+        </div>
+
+      </div>
+      <% end %>
+      <% end %>
+      </div>
+
+  </div>
+</div>
+
+<%= render "pages/footbar" %>
