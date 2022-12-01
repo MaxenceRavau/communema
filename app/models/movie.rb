@@ -5,6 +5,8 @@ class Movie < ApplicationRecord
   has_one_attached :photo
 
   scope :top_rated, -> { where("market_rating > 7.5").order(market_rating: :desc) }
+  scope :sorties_semaine, -> { where(release_date: "Wed, 30 Nov 2022") }
+
 
   # def self.top_rated
   #   Movie.where("market_rating > 6")

@@ -1,0 +1,41 @@
+.sharing-card{
+  background-color: white;
+  margin: 10px;
+  min-height: 200px;
+  position: relative;
+  border-bottom: solid grey 2px;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.sharing-image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  width: auto;
+  max-width: 130px;
+  border-radius: 10px;
+}
+
+
+#sharing-details-date-duration{
+  position: absolute;
+  bottom: 72px;
+  left: 161px;
+}
+
+.comment-title h1{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.sharing-card h3{
+
+}
+
+.sharing-icon i{
+  position: relative;
+  left: 24px;
+  bottom: -156px;
+}
