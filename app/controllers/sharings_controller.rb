@@ -10,7 +10,6 @@ class SharingsController < ApplicationController
     @sharings = policy_scope(current_user.sharings)
     followed_users_sharings = Sharing.where(user: current_user.followed_users)
     @movie
-
   end
 
   def create
