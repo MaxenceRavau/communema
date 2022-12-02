@@ -15,7 +15,6 @@ class SharingsController < ApplicationController
 
   def create
     @sharing = Sharing.new(sharing_params)
-    @sharing.session = params[session_id]
     @sharing.user = current_user
     authorize @sharing
     if @sharing.save
@@ -28,6 +27,6 @@ class SharingsController < ApplicationController
   private
 
   def sharing_params
-    params.require(:sharing).permit(:description, :cancelled?)
+    params.require(:sharing).permit(:description, :session_id)
   end
 end
