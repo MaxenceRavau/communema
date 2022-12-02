@@ -76,10 +76,10 @@ a{
   color: black;
 }
 
-#genre-tag{
+.genre-tag{
   background-color: green;
   font-size: 18px;
-  color: white;
+  color: white !important;
   text-transform: lowercase;
   border-radius: 5px;
   text-align: center;
@@ -87,7 +87,41 @@ a{
   padding: 5px;
   bottom: 12px;
   width: auto;
+  &.documentaire{
+    background-color: #ff58b6;
+  }
+  &.thriller{
+    background-color: #ff8f68;
+  }
+  &.comédie{
+    background-color: #ffd35f;
+  }
+  &.drame{
+    background-color: #05541e;
+  }
+  &.action{
+    background-color: #bb6621;
+  }
+  &.horreur{
+    background-color: #6d0000;
+  }
+  &.animation{
+    background-color: #912000;
+  }
+  &.histoire{
+    background-color: #0076ff;
+  }
+  &.music{
+    background-color: #14238b;
+  }
+  &.romance{
+    background-color: #8c4c38;
+  }
+  &.crime{
+    background-color: #343c4c;
+  }
 }
+
 
 
 
@@ -110,7 +144,7 @@ a{
   max-width: 130px;
 }
 
-#market-rating{
+.market-rating{
   font-size: 18px;
 }
 
