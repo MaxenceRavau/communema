@@ -1,27 +1,29 @@
 <div class="container-info-window">
 
-  <div class = "d-flex flex-column border-bottom">
-    <h4 class = "text-center title-color"><%= movie.title %></h4>
-    <h5 class = "text-start name-info-window"><%= cinema.name.titleize %></h5>
-    <p class = "text-start location-info-window"><%= cinema.location.titleize %></p>
+  <div class = "d-flex flex-column border-bottom border-primary">
+    <h4 class = "text-center title-color"><%= cinema.name.titleize %></h4>
+    <p class = "text-center location-info-window"><%= cinema.location.titleize %></p>
   </div>
 
-  <div class = "text-center mt-2 mb-2 border-bottom">
+  <div class = "text-start mt-2 mb-2 border-bottom border-primary">
     <p> Choisissez une date </p>
     <p><%= Date.today.strftime("%d %B %y")%></p>
   </div>
 
-    <%= simple_form_for(sharing) do |f| %>
-<%= f.association :session,
-            as: :radio_buttons,
-            label: "Choisissez une séance",
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'session-wrapper',
-            item_wrapper_class: 'session-item',
-            input_html: {class: 'session-selector'},
-            collection: sessions %>
-    <%= f.input :description, label: "Motivez vos amis", placeholder: "nik bien ta race" %>
-    <%= f.submit "Partager" %>
-  <% end %>
+  <div class = "mt-2 mb-2 border-bottom border-primary">
+
+      <%= simple_form_for(sharing) do |f| %>
+  <%= f.association :session,
+              as: :radio_buttons,
+              label: "Choisissez une séance",
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'session-wrapper',
+              item_wrapper_class: 'session-item',
+              input_html: {class: 'session-selector'},
+              collection: sessions %>
+  </div>
+      <%= f.input :description, label: "Motivez vos amis", placeholder: "Qui est chaud ? Les popcorns, c'est pour moi" %>
+      <%= f.submit "Partager avec vos amis"  %>
+    <% end %>
 
 </div>

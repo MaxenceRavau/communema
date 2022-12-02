@@ -29,9 +29,9 @@ export default class extends Controller {
       customMarker.setAttribute('data-bs-target', `#cinema-${marker.cinema_id}`);
       // customMarker.style.backgroundImage = `url('${marker.image_url}')`
       // customMarker.style.backgroundSize = "contain"
-      customMarker.style.background = 'black';
-      customMarker.style.width = "10px"
-      customMarker.style.height = "10px"
+      customMarker.style.background = '#050280';
+      customMarker.style.width = "8px"
+      customMarker.style.height = "8px"
 
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(customMarker)
