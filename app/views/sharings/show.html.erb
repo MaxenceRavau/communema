@@ -3,19 +3,7 @@
   data-sharing-subscription-sharing-id-value="<%= @sharing.id %>"
   data-sharing-subscription-current-user-id-value="<%= current_user.id %>">
 
-<div class="container">
-  <div class="d-flex align-items-center justify-content-between">
-    <%= link_to :back do %>
-    <i class="fa-solid fa-arrow-left"></i>
-    <% end %>
-    <h2><img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="profil">
-    <%= @sharing.user.first_name %> : <%= @sharing.description %> </h2>
-  </div>
-  <h3> <%= @sharing.session.movie.title %></h3>
-  <p><%= @sharing.session.cinema.name %>, <%= @sharing.session.cinema.location  %> </p>
-  <p> <%= @sharing.session.start_at.strftime("%A %d %B à %Hh%M") %></p>
-
-</div>
+  <%= render "sharings/sharing_card", sharing: @sharing %>
 
   <div class="messages" data-sharing-subscription-target="messages">
     <% @sharing.messages.each do |message| %>

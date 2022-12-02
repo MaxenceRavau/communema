@@ -7,34 +7,7 @@
 
   <div class="container m-10">
     <% @sharings.each do |sharing| %>
-
-      <div class="sharing-card">
-
-        <div class="d-flex mb-4">
-            <div class="sharing-image">
-              <%= cl_image_tag sharing.movie.photo.key, class: "movie-img" if sharing.movie.photo.attached? %>
-              <img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="profil">
-            </div>
-            <div class="d-flex flex-column justify-content-between ps-4 sharing-infos">
-              <h4 class="title">@<%= sharing.user.first_name %></h4>
-              <p> a prévu d'aller voir <strong><%= sharing.movie.title%></strong> demain <%= sharing.session.start_at.strftime("%H:%M") %> au <strong><%= sharing.session.cinema.name %></strong> </p>
-
-              <div class="align-items-center d-flex justify-content-between mt-2 sharing-icon">
-                <%# <p class="align-items-center d-flex"> <i class="fa-regular fa-heart"></i> <span class="ms-2">12</span> </p> %>
-                <p class="align-items-center d-flex">
-                    <%= link_to sharing_path(sharing) do  %>
-                      <i class="fa-regular fa-comment"></i>
-                    <% end %>
-                    <span class="ms-2"></span> <%= sharing.messages.count %></p>
-                <%# <p class="align-items-center d-flex"> <i class="fa-solid fa-share"></i> <span class="ms-2">0</span> </p> %>
-              </div>
-            </div>
-        </div>
-
-          <p class="comment">"<%= sharing.description%>"</p>
-
-      </div>
-
+      <%= render "sharings/sharing_card", sharing: sharing %>
     <% end %>
   </div>
 
