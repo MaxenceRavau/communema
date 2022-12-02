@@ -6,11 +6,11 @@
   <div class="home-title d-flex justify-content-between">
     <label class="selected-movies-title" data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
       <input data-home-page-selection-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
-      <h2 class="suggestion-bar">Suggestions</h2>
+      <h2 class="suggestion-bar">Suggestions (<%=@top_rated_movies.count %>)</h2>
     </label>
     <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
     <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
-      <h2 class="sorties-semaine-bar">Sorties semaine</h2>
+      <h2 class="sorties-semaine-bar">Sorties semaine (<%=@sorties_semaine.count %>)</h2>
     </label>
   </div>
 
@@ -31,6 +31,7 @@
             <div class="group-text-movie d-flex justify-content-between">
               <p><%= movie.release_date%></p>
               <p><%= movie.duration%> min</p>
+
             </div>
          </div>
         </div>
@@ -52,9 +53,9 @@
          <div class="movie-details">
           <h3 class="movie-title"><%= movie.title%></h3>
           <div id="details-date-duration">
-          <p><%= movie.release_date%></p>
-          <p><%= movie.duration%> min</p>
-          <p><%= movie.director%></p>
+            <p><%= movie.release_date.strftime("%d %b %Y")%></p>
+            <p><%= movie.duration%> min</p>
+            <p><%= movie.director%></p>
           </div>
           <p id="market-rating"> <i class="fa-solid fa-star"></i> <%= movie.market_rating%></p>
           <p id="genre-tag"><%= movie.genre%></p>

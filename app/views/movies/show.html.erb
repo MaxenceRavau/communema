@@ -8,10 +8,10 @@
            </div>
         <div class="movie-details ml-4">
           <p class="movie-title"><%= @movie.title%></p>
-          <p><%= @movie.release_date%></p>
+          <p><%= @movie.release_date.strftime("%d %b %Y")%></p>
           <p><%= @movie.duration%> min</p>
           <p><%= @movie.director%></p>
-          <p><%= @movie.market_rating%></p>
+          <p><i class="fa-solid fa-star"></i> <%= @movie.market_rating%></p>
           <p class="genre-tag"><%= @movie.genre%></p>
         </div>
       </div>
