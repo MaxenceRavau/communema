@@ -2,40 +2,55 @@
   background-color: white;
   margin: 10px;
   min-height: 200px;
-  position: relative;
-  border-bottom: solid grey 2px;
-  padding: 10px;
+  border-bottom: solid lightgrey 2px;
+  padding: 10px 0;
   margin-bottom: 30px;
 }
 
-.sharing-image img{
-  height: 100%;
-  width: 100%;
+.sharing-image {
+  position: relative;
+}
+
+.sharing-image .movie-img {
+  width: 100px;
+  height: 140px;
   object-fit: cover;
   border-radius: 10px;
-  width: auto;
-  max-width: 130px;
-  border-radius: 10px;
 }
 
-
-#sharing-details-date-duration{
+.sharing-image .avatar {
   position: absolute;
-  bottom: 72px;
-  left: 161px;
+  top: -20px;
+  right: -20px;
+
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
-.comment-title h1{
-  font-size: 20px;
-  margin-bottom: 20px;
+.sharing-infos {
+  width: 100%;
+  & p {
+    margin-bottom: 0;
+  }
+  & .title {
+    font-weight: bold;
+    margin: 0;
+    text-transform: lowercase;
+  }
 }
 
-.sharing-card h3{
-
+.sharing-icon {
+  font-size: 27px;
+  & span {
+    font-size: 18px;
+  }
 }
 
-.sharing-icon i{
-  position: relative;
-  left: 24px;
-  bottom: -156px;
+.comment{
+  font-style: italic;
+  font-size: 16px ;
+  font-weight: 300;
 }
