@@ -28,3 +28,15 @@
 </div>
 
 <%= render "pages/footbar" %>
+
+<!-- Modal -->
+<% @cinemas.each do |cinema| %>
+  <% sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day) %>
+  <div class="modal fade" id="cinema-<%= cinema.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <%= render "movies/info_window", cinema: cinema, movie: @movie, sessions: sessions, sharing: Sharing.new %>
+      </div>
+    </div>
+  </div>
+<% end %>

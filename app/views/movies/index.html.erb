@@ -29,7 +29,7 @@
             </div>
             <h3 class="movie-title"><%= movie.title%></h3>
             <div class="group-text-movie d-flex justify-content-between">
-              <p><%= movie.release_date%></p>
+              <p><%= movie.release_date.strftime("%d %b %Y")%></p>
               <p><%= movie.duration%> min</p>
 
             </div>
