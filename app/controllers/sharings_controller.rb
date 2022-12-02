@@ -7,9 +7,10 @@ class SharingsController < ApplicationController
   end
 
   def index
-    @sharings = policy_scope(current_user.sharings)
-    followed_users_sharings = Sharing.where(user: current_user.followed_users)
-    @movie
+
+    @sharings = policy_scope(current_user.sharings).order(created_at: :desc)
+    @followed_users_sharings = Sharing.where(user: current_user.followed_users).order(created_at: :desc)
+
   end
 
   def create
