@@ -39,9 +39,19 @@
       </div>
 </div>
 
-    <div class="container" data-home-page-selection-target="sortiesSemaine">
+    <div class="container text-white" data-home-page-selection-target="sortiesSemaine">
+
       <% @reviews.each do |review| %>
-      <%= review.comment %>
+      <div class="d-flex">
+        <%= cl_image_tag review.user.avatar.key, witdh: 30, height: 30 %>
+        <div>
+          <p><%= review.user.first_name %></p>
+          <p><%= review.rating %></p>
+          <p><%= review.comment %></p>
+        </div>
+      </div>
+
+
       <% end %>
     </div>
 
