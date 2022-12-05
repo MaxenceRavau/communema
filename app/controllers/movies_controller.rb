@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
     authorize @movie
 
     @cinemas = @movie.cinemas.geocoded
-    @reviews = @movie.reviews
+    @reviews = @movie.reviews.order(created_at: :desc)
 
     @markers = @cinemas.map do |cinema|
       @sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day)

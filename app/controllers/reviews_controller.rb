@@ -12,11 +12,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.movie = @movie
+    @review.movie = Movie.find(params[:movie_id])
     @review.user = current_user
     authorize @review
     if @review.save
-      redirect_to reviews_path
+      redirect_to sharings_path
     else
       render :new
     end
