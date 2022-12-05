@@ -1,15 +1,33 @@
 <%= render "shared/navbar" %>
 
-  <div class="title d-flex justify-content-around m-3">
-    <h2 class="seance-bar-sharing">Séances</h2>
+
+
+
+<div data-controller="home-page-selection">
+  <div class="home-title d-flex justify-content-between">
+    <label class="selected-movies-title" data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
+      <input data-home-page-selection-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
+      <h2 class="suggestion-bar">Mes séances</h2>
+    </label>
+    <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
+    <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
+      <h2 class="sorties-semaine-bar">Mes amis </h2>
+    </label>
   </div>
 
-  <div class="container mb-5">
-    <% @sharings.each do |sharing| %>
+
+  <div class="container" data-home-page-selection-target="suggestion">
+     <% @sharings.each do |sharing| %>
       <%= render "sharings/sharing_card", sharing: sharing %>
 
     <% end %>
   </div>
+
+    <div class="container" data-home-page-selection-target="sortiessemaine">
+
+    </div>
+
+
 
 
 

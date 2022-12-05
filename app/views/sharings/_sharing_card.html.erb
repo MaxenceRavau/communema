@@ -16,13 +16,10 @@
                         <i class="fa-regular fa-comment"></i>
                       <% end %>
                       <span class="ms-2"></span> <%= sharing.messages.count %></p>
-                      <% unless sharing.users.include?(current_user) %>
-                        <%= link_to "join", sharing_attendees_path(sharing), data_turbo_method: :post, data: { action: 'click->sharing-card#join'} %>
-                      <% end %>
-
+                      <p><%= sharing.users.pluck(:first_name).join(', ') %></p>
                   <%# <p class="align-items-center d-flex"> <i class="fa-solid fa-share"></i> <span class="ms-2">0</span> </p> %>
                 </div>
-                <p><%= sharing.users.pluck(:first_name).join(', ') %></p>
+
 
               <% end %>
             </div>
@@ -30,9 +27,14 @@
 
           <p class="comment">"<%= sharing.description%>"</p>
 
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_review_modal">
+        <div class="align-items-center d-flex justify-content-between">
+          <button type="button" class="btn-red" data-bs-toggle="modal" data-bs-target="#new_review_modal">
           Add a review
           </button>
+          <% unless sharing.users.include?(current_user) %>
+            <%= link_to "join", sharing_attendees_path(sharing), data_turbo_method: :post, data: { action: 'click->sharing-card#join'}, class: "btn btn-blue" %>
+          <% end %>
+        </div>
 
           <%= render "reviews/modal", movie: sharing.movie, review: @review %>
       </div>
