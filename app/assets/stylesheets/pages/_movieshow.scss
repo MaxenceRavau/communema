@@ -21,18 +21,19 @@
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
-  color: #050280;
+  color: white;
   margin-right: 20px;
   margin-left: 20px;
 }
 
 .movie-card{
-  background-color: white;
+  background-color: #303030;
   margin: 10px;
   margin-bottom: 20px;
   min-height: 200px;
   position: relative;
   border-bottom: solid lightgrey 3px;
+  color: white;
 }
 
 
@@ -63,6 +64,7 @@
 .movie-details{
   padding: 10px;
   width: 100%;
+  color: white;
 }
 
 .detail-infos{

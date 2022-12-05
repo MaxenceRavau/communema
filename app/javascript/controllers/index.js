@@ -13,6 +13,9 @@ application.register("home-page-selection", HomePageSelectionController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import SharingCardController from "./sharing_card_controller"
+application.register("sharing-card", SharingCardController)
+
 import SharingSubscriptionController from "./sharing_subscription_controller"
 application.register("sharing-subscription", SharingSubscriptionController)
 
