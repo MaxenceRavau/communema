@@ -1,5 +1,4 @@
-      <div class="sharing-card">
-
+      <div class="sharing-card" data-controller="sharing-card" data-sharing-card-path-value="<%= sharing_attendees_path(sharing) %>">
         <div class="d-flex mb-4">
             <div class="sharing-image">
               <%= cl_image_tag sharing.movie.photo.key, class: "movie-img" if sharing.movie.photo.attached? %>
@@ -17,8 +16,14 @@
                         <i class="fa-regular fa-comment"></i>
                       <% end %>
                       <span class="ms-2"></span> <%= sharing.messages.count %></p>
+                      <% unless sharing.users.include?(current_user) %>
+                        <%= link_to "join", sharing_attendees_path(sharing), data_turbo_method: :post, data: { action: 'click->sharing-card#join'} %>
+                      <% end %>
+
                   <%# <p class="align-items-center d-flex"> <i class="fa-solid fa-share"></i> <span class="ms-2">0</span> </p> %>
                 </div>
+                <p><%= sharing.users.pluck(:first_name).join(', ') %></p>
+
               <% end %>
             </div>
         </div>

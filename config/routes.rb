@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :sharings, only: [:index, :update] do
     resources :messages, only: [:index, :create, :new]
-    resources :attendees, only: [:create, :new, :destroy]
+    resources :attendees, only: [:create, :new]
   end
 
   resources :sharings, only: [:show, :create] do
