@@ -95,14 +95,12 @@ session_plannings = [
 cinemas = Cinema.all # à voir si on le fait pas sur une sélection de cinémas seulement
 
 # ---- Création de sessions historiques ----
-
-cinemas.each do |cinema|
-  movies.each do |movie|
-    start_at = Time.parse(Date.today.strftime('%y/%m/%d') + " 20:00") - 7.days
-    session = Session.create(movie: movie, cinema: cinema, start_at: start_at)
-    User.all.each do |user|
-      review = Review.create(movie: movie, rating: [3, 4, 5].sample, user: user, comment: ["top", "bien"].sample)
-    end
+cinema = Cinema.first
+movies.each do |movie|
+  start_at = Time.parse(Date.today.strftime('%y/%m/%d') + " 20:00") - 7.days
+  # session = Session.create(movie: movie, cinema: cinema, start_at: start_at)
+  User.all.shuffle.first(rand(6..10)).each do |user|
+    Review.create(movie: movie, rating: [3, 4, 5].sample, user: user, comment: ["top", "bien"].sample)
   end
 end
 
