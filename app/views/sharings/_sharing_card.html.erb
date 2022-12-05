@@ -35,6 +35,6 @@
             <%= link_to "Participer", sharing_attendees_path(sharing), data_turbo_method: :post, data: { action: 'click->sharing-card#join'}, class: "btn-participer" %>
           <% end %>
         </div>
-
+ 
           <%= render "reviews/modal", movie: sharing.movie, review: Review.new %>
       </div>
