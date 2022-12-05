@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :follows, dependent: :destroy, foreign_key: :follower_id
   has_many :followed_users, through: :follows, source: :followee
+  has_one_attached :avatar
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

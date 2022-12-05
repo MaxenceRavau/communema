@@ -15,7 +15,7 @@
   </div>
 
   <div class="container" data-home-page-selection-target="suggestion">
-    <% @top_rated_movies.each do |movie| %>
+    <% @selected_movies.each do |movie| %>
       <%= link_to movie_path(movie) do %>
 
         <div class="movie-card d-flex justify-content-between">
@@ -72,5 +72,3 @@
 </div>
 
 <%= render "pages/footbar" %>
-
-<% raise %>
