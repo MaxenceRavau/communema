@@ -18,6 +18,7 @@
 
   <div class="container" data-home-page-selection-target="suggestion">
      <% @sharings.each do |sharing| %>
+
       <%= render "sharings/sharing_card", sharing: sharing %>
 
     <% end %>
