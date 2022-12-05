@@ -4,10 +4,13 @@
     <h2 class="seance-bar-sharing">Séances</h2>
   </div>
 
-  <div class="container m-10">
+  <div class="container mb-5">
     <% @sharings.each do |sharing| %>
       <%= render "sharings/sharing_card", sharing: sharing %>
+
     <% end %>
   </div>
+
+
 
 <%= render "pages/footbar" %>

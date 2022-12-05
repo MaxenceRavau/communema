@@ -15,3 +15,6 @@ application.register("map", MapController)
 
 import SharingSubscriptionController from "./sharing_subscription_controller"
 application.register("sharing-subscription", SharingSubscriptionController)
+
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)
