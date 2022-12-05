@@ -1,4 +1,4 @@
-<div class="modal fade" id="new_movie_modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="new_review_modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,9 +9,10 @@
       <%= simple_form_for [movie, review] do |f| %>
         <div class="modal-body">
           <%= f.input :comment, placeholder: "Enter a comment about the movie" %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
         </div>
         <div class="modal-footer">
-          <%= f.submit "Add movie", class: "btn btn-flat" %>
+          <%= f.submit "Add review", class: "btn btn-flat" %>
           <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Back</button>
         </div>
       <% end %>

@@ -25,4 +25,9 @@
 
           <p class="comment">"<%= sharing.description%>"</p>
 
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_review_modal">
+          Add a review
+          </button>
+
+          <%= render "reviews/modal", movie: sharing.movie, review: @review %>
       </div>
