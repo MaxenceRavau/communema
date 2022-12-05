@@ -1,22 +1,42 @@
+require "json"
+require "open-uri"
+
+Sharing.destroy_all
 Cinema.destroy_all
 Follow.destroy_all
+Review.destroy_all
 User.destroy_all
 Movie.destroy_all
 
 puts "destroying..."
 
-require "json"
-
 # ---- Users ----
 
-bob = User.create!(email: "bob@mail.com", password: '123456', first_name: 'Bob', last_name: 'Kiffeur')
-mark = User.create!(email: "mark@mail.com", password: '123456', first_name: 'Mark')
-nico = User.create!(email: "nico@mail.com", password: '123456', first_name: 'Nico')
+ParsingStudents.new.call
 
-# ---- Followers & Followees ----
+User.all.each do |user|
+  User.where.not(id: user.id).each do |buddy|
+    Follow.create(
+      follower: user,
+      followee: buddy
+    )
+  end
+end
 
-Follow.create!(follower: bob, followee: mark)
-Follow.create!(follower: bob, followee: nico)
+# # @test_user.each do |user|
+# #   Follow.create!(
+# #     email:
+# #   )
+# # end
+
+# bob = User.create!(email: "bob@mail.com", password: '123456', first_name: 'Bob', last_name: 'Kiffeur')
+# mark = User.create!(email: "mark@mail.com", password: '123456', first_name: 'Mark')
+# nico = User.create!(email: "nico@mail.com", password: '123456', first_name: 'Nico')
+
+# # ---- Followers & Followees ----
+
+# Follow.create!(follower: bob, followee: mark)
+# Follow.create!(follower: bob, followee: nico)
 
 # ---- Parsing des salles de cine en Ile de France ----
 
@@ -74,29 +94,37 @@ session_plannings = [
 
 cinemas = Cinema.all # à voir si on le fait pas sur une sélection de cinémas seulement
 
+# ---- Création de sessions historiques ----
+
+cinemas.each do |cinema|
+  movies.each do |movie|
+    start_at = Time.parse(Date.today.strftime('%y/%m/%d') + " 20:00") - 7.days
+    session = Session.create(movie: movie, cinema: cinema, start_at: start_at)
+    User.all.each do |user|
+      review = Review.create(movie: movie, rating: [3, 4, 5].sample, user: user, comment: ["top", "bien"].sample)
+    end
+  end
+end
+
 # ---- Dans chaque cine, pour chaque film, on crée une session ----
+
+sessions = []
 
 cinemas.each do |cinema|
   movies.each do |movie|
     session_plannings.sample.each do |starting_hour|
       4.times do |i|
-        puts "Création d'un session"
+        puts "Création d'une session"
         start_at = Time.parse(Date.today.strftime('%y/%m/%d') + " #{starting_hour}") + i.days
-        Session.create(movie: movie, cinema: cinema, start_at: start_at)
+        sessions.push(Session.create(movie: movie, cinema: cinema, start_at: start_at))
       end
     end
   end
 end
 
-# ---- On crée deux sharings pour Bob ----
+# ---- On crée deux sharings pour user.first ----
 
-bob_sessions = Session.all.shuffle.first(2)
-bob_sessions.each do |session|
-  Sharing.create!(session: session, user: bob, description: 'Trop envie de voir ce truc')
-end
-
-# ---- On crée 4 sharings pour les followees de Bob, au pif ----
-
-Session.where.not(id: bob_sessions.map(&:id)).shuffle.first(4).each do |session|
-  Sharing.create!(session: session, user: [mark, nico].sample, description: 'Vous venez ?')
+shared_sessions = sessions.shuffle.first(2)
+shared_sessions.each do |session|
+  Sharing.create!(session: session, user: User.first, description: 'Trop envie de voir ce truc')
 end

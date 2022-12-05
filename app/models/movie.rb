@@ -4,9 +4,12 @@ class Movie < ApplicationRecord
   has_many :cinemas, -> { distinct }, through: :sessions
   has_one_attached :photo
 
-  scope :top_rated, -> { where("market_rating > 7.5").order(market_rating: :desc) }
+  scope :top_rated, -> { where("market_rating > 7").order(market_rating: :desc) }
   scope :sorties_semaine, -> { where(release_date: "Wed, 30 Nov 2022") }
 
+  def rating_for_user(user)
+    Review.where(user: user.followed_users, movie: self).pluck(:rating).average
+  end
 
   # def self.top_rated
   #   Movie.where("market_rating > 6")

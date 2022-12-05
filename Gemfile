@@ -85,3 +85,6 @@ gem 'rest-client'
 
 # Gemfile
 gem "geocoder"
+
+# Nokogiri
+gem "nokogiri"
