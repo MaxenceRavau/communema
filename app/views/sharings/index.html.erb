@@ -24,8 +24,10 @@
     <% end %>
   </div>
 
-    <div class="container" data-home-page-selection-target="sortiessemaine">
-
+    <div class="container" data-home-page-selection-target="sortiesSemaine">
+      <% @followed_users_sharings.each do |sharing| %>
+      <%= render "sharings/sharing_card", sharing: sharing %>
+      <% end %>
     </div>
 
 
