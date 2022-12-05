@@ -13,7 +13,7 @@
   <div class = "mt-2 mb-2 border-bottom border-primary">
 
       <%= simple_form_for(sharing) do |f| %>
-  <%= f.association :session,
+      <%= f.association :session,
               as: :radio_buttons,
               label: "Choisissez une séance",
               collection_wrapper_tag: 'div',
@@ -21,9 +21,9 @@
               item_wrapper_class: 'session-item',
               input_html: {class: 'session-selector'},
               collection: sessions %>
-  </div>
       <%= f.input :description, label: "Motivez vos amis", placeholder: "Qui est chaud ? Les popcorns, c'est pour moi" %>
-      <%= f.submit "Partager avec vos amis"  %>
+      <%= f.submit "Partager avec vos amis", class: 'btn btn-primary'  %>
     <% end %>
+  </div>
 
 </div>

@@ -1,21 +1,23 @@
 .footbar-card{
-  background-color: white;
+  background-color: #762121;
   height: 80px;
   bottom: 0px;
   border-radius:2px -8px 15px -5px rgba(0,0,0,0.54);
   border-top-style: solid;
-  border-color: lightgrey;
-
+  border-color: #762121;
+  color: white;
 }
 
 .icon-movie{
   padding:10px;
   padding-left: 30px;
+  color: white;
 }
 
 .icon-group{
   padding: 10px;
   text-align: center;
+  color: white;
 }
 
 
@@ -23,4 +25,9 @@
 .icon-user{
   padding: 10px;
   padding-right: 30px;
+  color: white;
+}
+
+.text-white{
+  color: white;
 }

@@ -1,6 +1,18 @@
 <%= render "shared/navbar" %>
 
-  <div class="container">
+<div data-controller="home-page-selection">
+  <div class="home-title d-flex justify-content-between">
+    <label class="selected-movies-title" data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
+      <input data-home-page-selection-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
+      <h2 class="suggestion-bar">Movie Details</h2>
+    </label>
+    <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
+    <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
+      <h2 class="sorties-semaine-bar">Reviews</h2>
+    </label>
+  </div>
+
+  <div class="container" data-home-page-selection-target="suggestion">
     <div class="movie-card">
       <div class="d-flex justify-content-between">
           <div class="movie-show-image">
@@ -27,6 +39,12 @@
       </div>
 </div>
 
+    <div class="container" data-home-page-selection-target="sortiesSemaine">
+      <% @reviews.each do |review| %>
+      <%= review.comment %>
+      <% end %>
+    </div>
+
 <%= render "pages/footbar" %>
 
 <!-- Modal -->
@@ -34,7 +52,7 @@
   <% sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day) %>
   <div class="modal fade" id="cinema-<%= cinema.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content modal-content-map">
         <%= render "movies/info_window", cinema: cinema, movie: @movie, sessions: sessions, sharing: Sharing.new %>
       </div>
     </div>

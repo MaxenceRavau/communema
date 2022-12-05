@@ -1,5 +1,4 @@
-      <div class="sharing-card">
-
+      <div class="sharing-card" data-controller="sharing-card" data-sharing-card-path-value="<%= sharing_attendees_path(sharing) %>">
         <div class="d-flex mb-4">
             <div class="sharing-image">
               <%= cl_image_tag sharing.movie.photo.key, class: "movie-img" if sharing.movie.photo.attached? %>
@@ -12,17 +11,30 @@
               <% unless current_page?(sharing_path(sharing)) %>
                 <div class="align-items-center d-flex justify-content-between mt-2 sharing-icon">
                   <%# <p class="align-items-center d-flex"> <i class="fa-regular fa-heart"></i> <span class="ms-2">12</span> </p> %>
-                  <p class="align-items-center d-flex">
+                  <p class="align-items-center d-flex font-size-user">
                       <%= link_to sharing_path(sharing) do  %>
-                        <i class="fa-regular fa-comment"></i>
+                        <i class="fa-regular fa-comment font-size-user"></i>
                       <% end %>
                       <span class="ms-2"></span> <%= sharing.messages.count %></p>
+                      <p class="font-size-user"><%= sharing.users.pluck(:first_name).join(', ') %></p>
                   <%# <p class="align-items-center d-flex"> <i class="fa-solid fa-share"></i> <span class="ms-2">0</span> </p> %>
                 </div>
+
+
               <% end %>
             </div>
         </div>
 
           <p class="comment">"<%= sharing.description%>"</p>
 
+        <div class="align-items-center d-flex justify-content-between">
+          <button type="button" class="btn-red" data-bs-toggle="modal" data-bs-target="#new_review_modal">
+          Noter le film
+          </button>
+          <% unless sharing.users.include?(current_user) %>
+            <%= link_to "Participer", sharing_attendees_path(sharing), data_turbo_method: :post, data: { action: 'click->sharing-card#join'}, class: "btn-participer" %>
+          <% end %>
+        </div>
+
+          <%= render "reviews/modal", movie: sharing.movie, review: Review.new %>
       </div>

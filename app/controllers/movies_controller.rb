@@ -12,9 +12,10 @@ class MoviesController < ApplicationController
     authorize @movie
 
     @cinemas = @movie.cinemas.geocoded
+    @reviews = Review.all
 
     @markers = @cinemas.map do |cinema|
-      sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day)
+      @sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day)
       {
         lat: cinema.latitude,
         lng: cinema.longitude,
