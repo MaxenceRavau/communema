@@ -3,9 +3,8 @@
   margin: 10px;
   color: white;
   min-height: 200px;
-  border-bottom: solid #762121 2px;
-  padding: 10px 0;
   margin-bottom: 30px;
+  border-radius: 10px;
 }
 
 .sharing-image {
@@ -13,8 +12,8 @@
 }
 
 .sharing-image .movie-img {
-  width: 100px;
-  height: 140px;
+  width: 110px;
+  height: 160px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -33,6 +32,7 @@
 
 .sharing-infos {
   width: 100%;
+  padding-top: 2px;
   & p {
     margin-bottom: 0;
   }
@@ -54,6 +54,7 @@
   font-style: italic;
   font-size: 16px ;
   font-weight: 300;
+  padding-left: 10px;
 }
 
 .seance-bar-sharing{
@@ -66,6 +67,12 @@
   background-color: #762121;
   color: white;
   border-radius: 10px;
+  padding: 10px;
 }
 
-
+.btn-participer{
+  background-color: #762121;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
