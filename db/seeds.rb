@@ -18,7 +18,6 @@ nico = User.create!(email: "nico@mail.com", password: '123456', first_name: 'Nic
 Follow.create!(follower: bob, followee: mark)
 Follow.create!(follower: bob, followee: nico)
 
-
 # ---- Parsing des salles de cine en Ile de France ----
 
 filepath = "db/salles.json"
@@ -54,7 +53,9 @@ end
 
 # ---- mettre une 10aine de tmdb_id dans l'array ----
 
-tmdb_ids = Movie.limit(10).pluck(:tmdb_id)
+# tmdb_ids = Movie.limit(10).pluck(:tmdb_id)
+
+tmdb_ids = ["436270", "505642", "791177", "615952", "837881", "944303", "872709", "998783", "971594", "998783", "899112", "785980", "664469", "918044","865498"]
 
 # ---- On récupère les movies qui correspondent aux ids ci-dessus. Instances de movies ----
 
