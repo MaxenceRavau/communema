@@ -1,6 +1,7 @@
 class Movie < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :sessions, dependent: :destroy
+  has_many :sharings, through: :sessions
   has_many :cinemas, -> { distinct }, through: :sessions
   has_one_attached :photo
 
@@ -16,6 +17,10 @@ class Movie < ApplicationRecord
 
   def rating_for_movie
     reviews.average(:rating).round(2)
+  end
+
+  def sharings_of_followed_users(user)
+    sharings.where(user: user.followed_users)
   end
 
   # def self.top_rated
