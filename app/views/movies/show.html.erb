@@ -4,11 +4,11 @@
   <div class="home-title d-flex justify-content-between">
     <label class="selected-movies-title" data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
       <input data-home-page-selection-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
-      <h2 class="suggestion-bar">Movie Details</h2>
+      <h2 class="suggestion-bar">Détails et séances</h2>
     </label>
     <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
     <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
-      <h2 class="sorties-semaine-bar">Reviews</h2>
+      <h2 class="sorties-semaine-bar">Notes</h2>
     </label>
   </div>
 
@@ -42,14 +42,16 @@
     <div class="container text-white" data-home-page-selection-target="sortiesSemaine">
 
       <% @reviews.each do |review| %>
-      <div class="d-flex">
-        <%= cl_image_tag review.user.avatar.key, witdh: 30, height: 30 %>
+      <div class="card-reviews" >
+        <div class = "d-flex justify-content-between">
+          <%= cl_image_tag review.user.avatar.key, witdh: 50, height: 50, class:"rounded-circle" %>
+          <p><%= review.rating %> <i class="fa-solid fa-star"></p>
+        </div>
         <div>
           <p><%= review.user.first_name %></p>
-          <p><%= review.rating %></p>
-          <p><%= review.comment %></p>
+          <p>Avis : "<%= review.comment%>"</p>
         </div>
-      </div>
+    </div>
 
 
       <% end %>
