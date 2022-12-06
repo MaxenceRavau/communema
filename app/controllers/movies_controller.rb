@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   def index
     @movies = policy_scope(Movie).all
     @top_rated_movies = @movies.top_rated
-    @sorties_semaine = @movies.sorties_semaine #.joins("left outer join reviews on reviews.movie_id = movies.id").select('movies.*, AVG(reviews.rating) AS average_rating').where(reviews: { user: current_user.followed_users }).group('movies.id').order(average_rating: :desc)
+    @sorties_semaine = @movies.sorties_semaine.joins("left outer join reviews on reviews.movie_id = movies.id").select('movies.*, AVG(reviews.rating) AS average_rating').where("reviews.user_id IS NULL OR reviews.user_id IN (?)", current_user.followed_users.pluck(:id)).group('movies.id').order("average_rating DESC NULLS LAST")
     @selected_movies = Movie.joins(:reviews).select('movies.*, AVG(reviews.rating) AS average_rating').where(reviews: { user: current_user.followed_users }).group('movies.id').order(average_rating: :desc)
     # @selected_movies = Movie.where(tmdb_id: ["436270", "505642", "791177", "615952", "837881", "944303", "872709", "998783", "971594", "998783", "899112", "785980", "664469", "918044","865498"])
     @cinemas = Cinema.all
