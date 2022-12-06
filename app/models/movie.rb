@@ -8,7 +8,7 @@ class Movie < ApplicationRecord
   scope :sorties_semaine, -> { where(release_date: "Wed, 30 Nov 2022") }
 
   def rating_for_user(user)
-    Review.where(user: user.followed_users, movie: self).average(:rating)
+    Review.where(user: user.followed_users, movie: self).average(:rating).round(2)
   end
 
   def rating_for_movie

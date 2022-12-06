@@ -34,13 +34,13 @@
           <p class="comment">"<%= sharing.description%>"</p>
 
         <div class="align-items-center d-flex justify-content-between">
-          <button type="button" class="btn-red" data-bs-toggle="modal" data-bs-target="#new_review_modal">
+          <button type="button" class="btn-red" data-bs-toggle="modal" data-bs-target="#new_review_modal_<%= sharing.session_id %>">
           Noter le film
           </button>
           <% unless sharing.users.include?(current_user) %>
             <%= link_to "Participer", sharing_attendees_path(sharing), data_turbo_method: :post, data: { action: 'click->sharing-card#join'}, class: "btn-participer" %>
           <% end %>
         </div>
- 
-          <%= render "reviews/modal", movie: sharing.movie, review: Review.new %>
+
+          <%= render "reviews/modal", movie: sharing.movie, review: Review.new, modal_id: sharing.session_id %>
       </div>
