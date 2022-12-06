@@ -11,6 +11,10 @@ class Movie < ApplicationRecord
     Review.where(user: user.followed_users, movie: self).average(:rating).round(2)
   end
 
+  def rating_for_movie
+    reviews.average(:rating).round(2)
+  end
+
   # def self.top_rated
   #   Movie.where("market_rating > 6")
   # end
