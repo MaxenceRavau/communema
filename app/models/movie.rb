@@ -14,6 +14,10 @@ class Movie < ApplicationRecord
     followee_reviews.average(:rating).round(2)
   end
 
+  def rating_for_movie
+    reviews.average(:rating).round(2)
+  end
+
   # def self.top_rated
   #   Movie.where("market_rating > 6")
   # end

@@ -4,7 +4,7 @@
   <div class="home-title d-flex justify-content-between">
     <label class="selected-movies-title" data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
       <input data-home-page-selection-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
-      <h2 class="suggestion-bar">Détails et séances</h2>
+      <h2 class="suggestion-bar">Détails</h2>
     </label>
     <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
     <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
@@ -22,9 +22,10 @@
           <p class="movie-title"><%= @movie.title%></p>
           <p><%= @movie.release_date.strftime("%d %b %Y")%></p>
           <p><%= @movie.duration%> min</p>
-          <p><%= @movie.director%></p>
-          <p><i class="fa-solid fa-star"></i> <%= @movie.market_rating%></p>
-          <p class="genre-tag"><%= @movie.genre%></p>
+          <div class="d-flex justify-content-between">
+            <p><i class="fa-solid fa-star"></i> <%= @movie.market_rating%></p>
+            <p class="genre-tag"><%= @movie.genre%></p>
+          </div>
         </div>
       </div>
         <div class="synospis-text">
@@ -39,21 +40,36 @@
       </div>
 </div>
 
-    <div class="container text-white" data-home-page-selection-target="sortiesSemaine">
-
+    <div class="container hidden-div text-white" data-home-page-selection-target="sortiesSemaine">
+      <div class="movie-card">
+      <div class="d-flex justify-content-between">
+          <div class="movie-show-image">
+            <%= cl_image_tag @movie.photo.key if @movie.photo.attached? %>
+           </div>
+        <div class="movie-details ml-4">
+          <p class="movie-title"><%= @movie.title%></p>
+          <p><%= @movie.release_date.strftime("%d %b %Y")%></p>
+          <p><%= @movie.duration%> min</p>
+          <p><%= @movie.director%></p>
+          <p><i class="fa-solid fa-star"></i> <%= @movie.market_rating%></p>
+          <p class="genre-tag"><%= @movie.genre%></p>
+        </div>
+      </div>
+      </div>
+      <div class= "d-flex justify-content-center">
+        <h2> <%= pluralize(@movie.reviews.count, "note", "notes") %> - <%= @movie.rating_for_movie %> de moyenne <h2>
+      </div>
       <% @reviews.each do |review| %>
-      <div class="card-reviews" >
-        <div class = "d-flex justify-content-between">
-          <%= cl_image_tag review.user.avatar.key, witdh: 50, height: 50, class:"rounded-circle" %>
-          <p><%= review.rating %> <i class="fa-solid fa-star"></p>
+        <div class="card-reviews" >
+            <div class= "d-flex flex-row">
+              <%= cl_image_tag review.user.avatar.key, witdh: 30, height: 30, class:"rounded-circle" %>
+              <h4 class = "title p-1">@<%= review.user.first_name %></h4>
+            </div>
+            <div class = "d-flex flex-column">
+              <p><strong>Sa note</strong> : <%= review.rating %></p>
+              <p><strong>Son avis</strong> : "<%= review.comment%>"</p>
+            </div>
         </div>
-        <div>
-          <p><%= review.user.first_name %></p>
-          <p>Avis : "<%= review.comment%>"</p>
-        </div>
-    </div>
-
-
       <% end %>
     </div>
 

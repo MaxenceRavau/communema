@@ -1,6 +1,6 @@
-<div class="modal fade" id="new_review_modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="new_review_modal_<%= modal_id %>" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <div class="modal-content modal-content-rating">
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>
@@ -12,7 +12,7 @@
           <%= f.input :rating, collection: (1..5).to_a, label: "", input_html: {data: {controller: "star-rating"}} %>
         </div>
         <div class="modal-footer">
-          <%= f.submit "Ajouter", class: "btn btn-primary" %>
+          <%= f.submit "Ajouter", class: "btn btn-modal" %>
           <%# <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Back</button> %>
         </div>
       <% end %>
