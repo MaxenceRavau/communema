@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
     @top_rated_movies = @movies.top_rated
     @sorties_semaine = @movies.sorties_semaine
     @selected_movies = Movie.where(tmdb_id: ["436270", "505642", "791177", "615952", "837881", "944303", "872709", "998783", "971594", "998783", "899112", "785980", "664469", "918044","865498"])
+    @cinemas = Cinema.all
   end
 
   def show

@@ -24,15 +24,16 @@
         </div>
         <div class="movie-details">
            <div class="group-icon d-flex justify-content-between mt-2 mb-2 ml-1">
-              <p class="genre-tag <%=movie.genre.downcase%>"><%= movie.genre%></p>
-              <p class="market-rating"> <i class="fa-solid fa-star"></i> <%= movie.market_rating%></p>
+              <p class="market-rating align-text-bottom"> <i class="fa-solid fa-star mr-2"></i> <%= movie.rating_for_user(current_user)%></p>
+              <p class="genre-tag text-center <%=movie.genre.downcase%>"><%= movie.genre%></p>
             </div>
-            <h3 class="movie-title"><%= movie.title%></h3>
-            <div class="group-text-movie d-flex justify-content-between">
-              <p><%= movie.release_date.strftime("%d %b %Y")%></p>
-              <p><%= movie.duration%> min</p>
-
-            </div>
+            <h3 class="movie-title text-center"><%= movie.title%></h3>
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="nb-cinema text-center align-bottom"><%= (1..6).to_a.sample %> cinémas à côté </p>
+             <% if Sharing.joins(session: :movie).where(user: current_user.followed_users, movies: { id: movie.id }).count > 0 %>
+                <p class="market-rating"><i class="fa-solid fa-users "></i><%= Sharing.joins(session: :movie).where(user: current_user.followed_users, movies: { id: movie.id }).count %></p>
+              <% end %>
+          </div>
          </div>
         </div>
 

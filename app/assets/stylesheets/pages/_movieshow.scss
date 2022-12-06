@@ -30,7 +30,7 @@
   background-color: #303030;
   margin: 10px;
   margin-bottom: 20px;
-  min-height: 200px;
+  height: 200px;
   position: relative;
   border-bottom: solid lightgrey 3px;
   color: white;
@@ -53,7 +53,7 @@
 
 
 .movie-title{
-  font-size: 25px;
+  font-size: 22px;
   font-weight:bold;
   color: white;
   margin-bottom: 20px;
@@ -85,10 +85,12 @@ a{
   text-transform: lowercase;
   border-radius: 5px;
   text-align: center;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 12px;
   padding: 5px;
   bottom: 12px;
-  width: auto;
+  width: fit-content;
+  align-items: center;
   &.documentaire{
     background-color: #ff58b6;
   }
@@ -147,7 +149,8 @@ a{
 }
 
 .market-rating{
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 // #details-date-duration{
@@ -195,4 +198,10 @@ font-size: 18px;
 
 .font-size-user{
   font-size: 20px;
+}
+
+.nb-cinema{
+  font-size: 14px !important;
+  font-style: italic;
+  margin-top: 10px;
 }
