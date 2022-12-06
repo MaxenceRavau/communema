@@ -4,7 +4,7 @@
   <div class="home-title d-flex justify-content-between">
     <label class="selected-movies-title" data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
       <input data-home-page-selection-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
-      <h2 class="suggestion-bar">Détails et séances</h2>
+      <h2 class="suggestion-bar">Détails</h2>
     </label>
     <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
     <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
@@ -22,9 +22,10 @@
           <p class="movie-title"><%= @movie.title%></p>
           <p><%= @movie.release_date.strftime("%d %b %Y")%></p>
           <p><%= @movie.duration%> min</p>
-          <p><%= @movie.director%></p>
-          <p><i class="fa-solid fa-star"></i> <%= @movie.market_rating%></p>
-          <p class="genre-tag"><%= @movie.genre%></p>
+          <div class="d-flex justify-content-between">
+            <p><i class="fa-solid fa-star"></i> <%= @movie.market_rating%></p>
+            <p class="genre-tag"><%= @movie.genre%></p>
+          </div>
         </div>
       </div>
         <div class="synospis-text">
