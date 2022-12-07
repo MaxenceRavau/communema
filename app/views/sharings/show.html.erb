@@ -3,7 +3,7 @@
   data-sharing-subscription-sharing-id-value="<%= @sharing.id %>"
   data-sharing-subscription-current-user-id-value="<%= current_user.id %>">
 
-  <%= render "sharings/sharing_card", sharing: @sharing %>
+  <%= render "sharings/sharing_card_message", sharing: @sharing %>
 
   <div class="messages" data-sharing-subscription-target="messages">
     <% @sharing.messages.each do |message| %>
