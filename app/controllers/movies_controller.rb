@@ -13,15 +13,16 @@ class MoviesController < ApplicationController
   def show
     authorize @movie
 
-    @cinemas = @movie.cinemas.geocoded
+    @cinemas = @movie.cinemas.geocoded.near([48.8647757, 2.3797682], 5)
     @reviews = @movie.reviews.order(created_at: :desc)
 
     @markers = @cinemas.map do |cinema|
-      @sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day)
+      # @sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day)
       {
         lat: cinema.latitude,
         lng: cinema.longitude,
-        cinema_id: cinema.id
+        cinema_id: cinema.id,
+        image_url: helpers.asset_url("marker.svg")
         # info_window: render_to_string(partial: "info_window", locals: {cinema: cinema, movie: @movie, sessions: sessions, sharing: Sharing.new })
       }
     end

@@ -11,7 +11,9 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/maxenceravau/clawg13yg000915pbxamevhlg"
+      style: "mapbox://styles/maxenceravau/clawg13yg000915pbxamevhlg",
+      // center: [2.3797682, 48.8647757],
+      // zoom: 12
     })
 
     this.#addMarkersToMap()
@@ -25,13 +27,19 @@ export default class extends Controller {
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div")
       customMarker.className = "marker"
+      customMarker.style.backgroundImage = `url('${marker.image_url}')`
+      customMarker.style.backgroundSize = "contain"
+      customMarker.style.backgroundRepeat = "no-repeat"
+      customMarker.style.backgroundPosition = "center"
+      customMarker.style.width = "25px"
+      customMarker.style.height = "25px"
       customMarker.setAttribute('data-bs-toggle', 'modal');
       customMarker.setAttribute('data-bs-target', `#cinema-${marker.cinema_id}`);
       // customMarker.style.backgroundImage = `url('${marker.image_url}')`
       // customMarker.style.backgroundSize = "contain"
-      customMarker.style.background = '#050280';
-      customMarker.style.width = "12px"
-      customMarker.style.height = "12px"
+      // customMarker.style.background = '#050280';
+      // customMarker.style.width = "12px"
+      // customMarker.style.height = "12px"
 
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(customMarker)
