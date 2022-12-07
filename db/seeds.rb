@@ -1,6 +1,7 @@
 require "json"
 require "open-uri"
 
+Message.destroy_all
 Sharing.destroy_all
 Cinema.destroy_all
 Follow.destroy_all
