@@ -255,8 +255,8 @@ font-size: 18px;
 
 #movie-title-show{
   color: white;
-  font-weight: 500 !important;
-  font-size: 20px !important;
+  font-weight: bold !important;
+  font-size: 18px !important;
   margin-bottom: 5px;
 }
 
@@ -293,4 +293,21 @@ font-size: 18px;
 .review-title{
   margin-top: 10px;
   font-size: 20px;
+}
+
+.sharing-card-movie-show{
+  height: 140px;
+  background-color: #303030;
+  margin: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  padding-top: 10px;
+  padding-right: 10px;
+
+  p {
+    margin-bottom: 0;
+  }
 }

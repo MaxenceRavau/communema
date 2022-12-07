@@ -1,0 +1,28 @@
+      <div class="sharing-card-movie-show" data-controller="sharing-card" data-sharing-card-path-value="<%= sharing_attendees_path(sharing) %>">
+
+            <div class="d-flex flex-column justify-content-between ps-4">
+              <h4 class="title">@<%= sharing.user.first_name %></h4>
+              <p> a prévu d'aller voir <strong><%= sharing.movie.title%></strong> demain <%= sharing.session.start_at.strftime("%H:%M") %> au <strong><%= sharing.session.cinema.name %></strong> </p>
+
+              <% unless current_page?(sharing_path(sharing)) %>
+                <div class="align-items-center d-flex justify-content-between mt-2 sharing-icon">
+                  <%# <p class="align-items-center d-flex"> <i class="fa-regular fa-heart"></i> <span class="ms-2">12</span> </p> %>
+                  <p class="align-items-center d-flex font-size-user">
+                      <%= link_to sharing_path(sharing) do  %>
+                        <i class="fa-regular fa-comment font-size-user"></i>
+                      <% end %>
+                       <span class="ms-2"></span> <%= sharing.messages.count %>
+                  </p>
+                <div class="d-flex">
+                  <% sharing.users.each do |user| %>
+                    <%= cl_image_tag user.avatar.key, width:30, height: 30, class: "d-inline rounded-circle" %>
+                  <% end %>
+                </div>
+
+                  <%# <p class="align-items-center d-flex"> <i class="fa-solid fa-share"></i> <span class="ms-2">0</span> </p> %>
+            </div>
+
+
+              <% end %>
+
+        </div>

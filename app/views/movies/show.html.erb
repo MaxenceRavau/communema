@@ -68,10 +68,11 @@
     </div>
     <div class="tab-pane fade" id="sharings" role="tabpanel" aria-labelledby="sharings-tab">
       <%@movie.sharings_of_followed_users(current_user).each do |sharing| %>
-       <%= render "sharings/sharing_card", sharing: sharing%>
+       <%= render "sharings/sharing_card_movie_show", sharing: sharing%>
       <% end %>
     </div>
   </div>
+
 
 <%= render "pages/footbar" %>
 

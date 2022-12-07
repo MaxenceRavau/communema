@@ -1,16 +1,16 @@
 <div class="container-info-window">
 
-  <div class = "d-flex flex-column border-bottom border-primary">
+  <div class = "d-flex flex-column border-bottom">
     <h4 class = "text-center title-color"><%= cinema.name.titleize %></h4>
     <p class = "text-center location-info-window"><%= cinema.location.titleize %></p>
   </div>
 
-  <div class = "text-start mt-2 mb-2 border-bottom border-primary">
+  <div class = "text-start mt-2 mb-2 border-bottom">
     <p> Choisissez une date </p>
     <p><%= Date.today.strftime("%d %B %y")%></p>
   </div>
 
-  <div class = "mt-2 mb-2 border-bottom border-primary">
+  <div class = "mt-2 mb-2 border-bottom text-white">
 
       <%= simple_form_for(sharing) do |f| %>
       <%= f.association :session,
@@ -22,7 +22,7 @@
               input_html: {class: 'session-selector'},
               collection: sessions %>
       <%= f.input :description, label: "Motivez vos amis", placeholder: "Qui est chaud ? Les popcorns, c'est pour moi" %>
-      <%= f.submit "Partager avec vos amis", class: 'btn btn-primary'  %>
+      <%= f.submit "Partager avec vos amis", class: 'btn-red-red'  %>
     <% end %>
   </div>
 
