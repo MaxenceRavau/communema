@@ -31,17 +31,11 @@ export default class extends Controller {
   }
 
   #buildMessageElement(currentUserIsSender, message) {
-    return `
-      <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
-        <div class="${this.#userStyleClass(currentUserIsSender)}">
-          ${message}
-        </div>
-      </div>
-    `
+    return message
   }
 
   #justifyClass(currentUserIsSender) {
-    return currentUserIsSender ? "justify-content-end" : "justify-content-start"
+    return currentUserIsSender ? 'flex-row-reverse justify-content-end' : 'justify-content-start'
   }
 
   #userStyleClass(currentUserIsSender) {

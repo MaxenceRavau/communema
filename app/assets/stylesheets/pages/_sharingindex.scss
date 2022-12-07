@@ -2,6 +2,8 @@
   background-color: #303030;
   margin: 10px;
   color: white;
+  min-height: 180px;
+  margin-bottom: 30px;
   width: 90vw;
   height: 215px;
   margin: 15px auto;
@@ -12,8 +14,8 @@
   background-color: black;
   margin: 10px;
   color: white;
-  min-height: 200px;
-  margin-bottom: 30px;
+  min-height: 180px;
+  margin-bottom: 0px;
   border-radius: 10px;
 }
 
@@ -50,7 +52,7 @@
 
 .sharing-infos {
   width: 100%;
-  padding-top: 2px;
+  padding-top: 0px;
   & p {
     margin-bottom: 0;
   }

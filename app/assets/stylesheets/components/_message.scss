@@ -1,23 +1,23 @@
 .message-row {
-  margin-bottom: 10px;
-  padding: 8px;
+  margin-bottom: 6px;
+  padding: 4px;
 }
 
 // To style the message itself
 .sender-style, .receiver-style {
-  width: 70%;
   max-width: 400px;
   border-radius: 4px;
   padding: 8px;
   min-height: 80px;
+  color:white;
 }
 
 .sender-style {
-  background-color: lightcoral;
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .receiver-style {
-  background-color: lightblue;
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .round-cross {
@@ -25,4 +25,41 @@
   position: relative;
   bottom: -1px;
   right: -189px;
+}
+
+.messages {
+  padding: 0.5rem;
+}
+
+.message {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  &.flex-row-reverse {
+    margin-left: auto;
+    .message-content {
+      margin-right: -5px;
+      padding-right: 1rem;
+      padding-left: 0.5rem;
+      margin-left: 0px;
+    }
+  }
+  img {
+    position: relative;
+    z-index: 10;
+  }
+  .message-content {
+    margin-left: -5px;
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    border-radius: 0.5rem;
+    p {
+      margin-bottom: 0;
+      word-break: break-all;
+    }
+  }
 }

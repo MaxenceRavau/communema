@@ -1,7 +1,5 @@
 <%= render "shared/navbar" %>
 
-
-
 <div class="container chatroom sharing-chatroom"
   data-controller="sharing-subscription"
   data-sharing-subscription-sharing-id-value="<%= @sharing.id %>"
@@ -9,13 +7,25 @@
 
   <%= render "sharings/sharing_card_message", sharing: @sharing %>
 
+  <div class="d-flex align-items-center justify-content-center sharing-avatars">
+    <% @sharing.users.each do |user| %>
+      <%= cl_image_tag user.avatar.key, width:50, height: 50, class: "d-inline rounded-circle" %>
+    <% end %>
+  </div>
+
+   <% if @sharing.users.include?(current_user) %>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_review_modal_<%= @sharing.session_id %>">
+          Donner un avis
+      </button>
+      <%= render "reviews/modal", movie: @sharing.movie, review: Review.new, modal_id: @sharing.session_id %>
+    <% else %>
+      <%= link_to "J'y vais !", sharing_attendees_path(@sharing), data_turbo_method: :post, data: { action: 'click->sharing-card#join'}, class: " btn btn-primary" %>
+    <% end %>
+
+
   <div class="messages" data-sharing-subscription-target="messages">
     <% @sharing.messages.each do |message| %>
-      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-          <%= render "messages/message", message: message %>
-        </div>
-      </div>
+      <%= render "messages/message", message: message %>
     <% end %>
   </div>
 
@@ -23,10 +33,9 @@
 
     <%= f.input :content,
       label: false,
-      placeholder: "Hello there",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>
 

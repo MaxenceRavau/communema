@@ -1,9 +1,27 @@
   .sharing-chatroom {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 170px);
     display: flex;
     flex-direction: column;
     .messages {
       flex-grow: 1;
       overflow: scroll;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  .sharing-movie-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .sharing-avatars {
+    margin-bottom: 1rem;
+    img {
+      margin-right: 0.5rem;
+    }
+    +a, +button {
+      margin-bottom: 1rem;
+      font-weight: bolder;
     }
   }
