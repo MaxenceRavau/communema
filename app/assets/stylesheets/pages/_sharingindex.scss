@@ -26,7 +26,9 @@
 .sharing-image .movie-img {
   width: 125px;
   height: 215px;
-  object-fit: cover;;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .sharing-image-feed {
@@ -95,4 +97,60 @@
   color: white;
   border-radius: 10px;
   padding: 10px;
+}
+
+.date-sharing{
+  font-size: 1rem;
+}
+
+.address-sharing{
+  font-size: 1rem;
+}
+
+
+.genre-tag-sharing{
+  font-size: 18px;
+  color: white !important;
+  text-transform: lowercase;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 5px;
+  bottom: 12px;
+  width: fit-content;
+  align-items: center;
+  &.documentaire{
+    background-color: #ff58b6;
+  }
+  &.thriller{
+    background-color: #ff8f68;
+  }
+  &.comédie{
+    background-color: #ffd35f;
+  }
+  &.drame{
+    background-color: #05541e;
+  }
+  &.action{
+    background-color: #bb6621;
+  }
+  &.horreur{
+    background-color: #6d0000;
+  }
+  &.animation{
+    background-color: #912000;
+  }
+  &.histoire{
+    background-color: #0076ff;
+  }
+  &.music{
+    background-color: #14238b;
+  }
+  &.romance{
+    background-color: #8c4c38;
+  }
+  &.crime{
+    background-color: #343c4c;
+  }
 }

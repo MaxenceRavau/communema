@@ -1,23 +1,27 @@
     <%= link_to sharing_path(sharing) do %>
       <div class="sharing-card" data-controller="sharing-card" data-sharing-card-path-value="<%= sharing_attendees_path(sharing) %>">
 
-        <div class="d-flex mb-4">
+        <div class="d-flex">
             <div class="sharing-image sharing-image-feed">
               <%= cl_image_tag sharing.movie.photo.key, class: "movie-img" if sharing.movie.photo.attached? %>
 
             </div>
-            <div class="d-flex flex-column ps-4 sharing-infos">
+            <div class="d-flex flex-column px-3 py-2 justify-content-between  sharing-infos">
               <%# <h4 class="title mb-2">@<%= sharing.user.first_name %>
-              <p class="mb-2"><strong><%= sharing.movie.title%></strong></p>
-              <div class="d-flex">
-                <p class="genre-tag text-center"> <%=sharing.movie.genre.downcase%></p>
-                <p> <i class="fa-regular fa-star"></i> <%=sharing.movie.reviews.average(:rating).round(2) %> </p>
+              <div>
+                <p class="mb-1"><strong><%= sharing.movie.title%></strong></p>
+                <div class="d-flex my-2 justify-content-start">
+                  <p class="genre-tag-sharing text-center me-2 <%=sharing.movie.genre.downcase%>"><%= sharing.movie.genre%></p>
+                  <p> <i class="fa-regular fa-star"></i> <%=sharing.movie.reviews.average(:rating).round(2) %> </p>
+                </div>
               </div>
-              <p class="mb-2"><i class="fa-regular fa-calendar"></i> <strong><%= sharing.session.start_at.strftime("%d/%m")%></strong> à <strong><%=sharing.session.start_at.strftime("%H:%M") %></strong></p>
-              <p class="mb-2"><i class="fa-solid fa-location-dot"></i> <strong><%= sharing.session.cinema.name %></strong> (<i><%= sharing.session.cinema.location %></i>)</p>
+              <div>
+                <p class="date-sharing mb-2"><i class="fa-regular fa-calendar"></i> <strong><%= sharing.session.start_at.strftime("%d/%m")%></strong> à <strong><%=sharing.session.start_at.strftime("%H:%M") %></strong></p>
+                <p class="address-sharing"><i class="fa-solid fa-location-dot"></i> <strong><%= sharing.session.cinema.name %></strong></p>
+              </div>
 
-              <% unless current_page?(sharing_path(sharing)) %>
-                <div class="align-items-center d-flex justify-content-between mt-2 sharing-icon">
+              <%# unless current_page?(sharing_path(sharing)) %>
+                <div class="align-items-center d-flex justify-content-between sharing-icon">
                   <p class="align-items-center d-flex font-size-user">
                     <% sharing.users.each do |user| %>
                       <%= cl_image_tag user.avatar.key, width:30, height: 30, class: "d-inline rounded-circle" %>
@@ -30,7 +34,7 @@
                   </div>
                 </div>
 
-              <% end %>
+              <%# end %>
             </div>
           </div>
         </div>
