@@ -1,0 +1,5 @@
+meta_product_name: "Communema"
+meta_title: "Communema - l'app de partage d'expériences cinéma"
+meta_description: "Vivez le cinéma qui vous ressemble"
+meta_image: "cover.jpg" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
