@@ -6,10 +6,10 @@
             <%= cl_image_tag @movie.photo.key if @movie.photo.attached? %>
            </div>
         <div class="movie-details ml-4">
-          <p class="movie-title-show"><%= @movie.title%></p>
+          <h3 id="movie-title-show"><%= @movie.title%></h3>
             <p><%= @movie.release_date.strftime("%d %b %Y")%> </p>
             <p> <%= @movie.duration%> min </p>
-          <div class="details-row25 d-flex justify-content-between">
+          <div class="d-flex justify-content-between">
             <p class="market-rating align-text-bottom"><i class="fa-solid fa-star"></i><span class="d-block ml-2"><%= @movie.rating_for_user(current_user)%></span></p>
             <p class="genre-tag text-center <%=@movie.genre.downcase%>"><%=@movie.genre%></p>
           </div>
@@ -18,7 +18,7 @@
     </div>
 
 
-  <ul class="nav nav-tabs text-white d-flex align-content-stretch" id="myTab" role="tablist">
+  <ul class="nav nav-tabs text-white d-flex justify-content-evenly" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active home-title" id="map-tab" data-bs-toggle="tab" data-bs-target="#map" type="button" role="tab" aria-controls="map" aria-selected="true"><i class="fa-solid fa-map"></i></button>
     </li>
