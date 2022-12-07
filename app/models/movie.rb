@@ -6,7 +6,7 @@ class Movie < ApplicationRecord
   has_one_attached :photo
 
   scope :top_rated, -> { where("market_rating > 7").order(market_rating: :desc) }
-  scope :sorties_semaine, -> { where(release_date: "Wed, 30 Nov 2022") }
+  scope :sorties_semaine, -> { where(release_date: "Wed, 07 Dec 2022") }
 
   def rating_for_user(user)
     followee_reviews = Review.where(user: user.followed_users, movie: self)

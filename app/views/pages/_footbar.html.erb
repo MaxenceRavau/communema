@@ -1,16 +1,22 @@
 <div class="footbar-card position-fixed w-100">
   <div class="icon-group d-flex justify-content-between">
-    <div class="icon-movie">
-      <i class="fa-sharp fa-solid fa-film"></i>
-      <p class="text-white"><%= link_to "Films", movies_path %></p>
-    </div>
     <div class="icon-group">
+    <%= link_to sharings_path do %>
       <i class="fa-sharp fa-solid fa-layer-group"></i>
-      <p class="text-white"><%= link_to "Feed", sharings_path %></p>
+      <p class="text-white">Feed</p>
+    <% end %>
+    </div>
+    <div class="icon-movie">
+    <%= link_to movies_path do %>
+      <i class="fa-sharp fa-solid fa-film"></i>
+      <p class="text-white">Films</p>
+    <% end %>
     </div>
     <div class="icon-user">
+    <%= link_to user_path(current_user) do %>
       <i class="fa-solid fa-user"></i>
-      <p class="text-white"><%= link_to "Profil", user_path(current_user) %></p>
+      <p class="text-white">Profil</p>
+    <% end %>
     </div>
   </div>
 </div>

@@ -45,7 +45,7 @@ serialized_salles = File.read(filepath)
 @salles = JSON.parse(serialized_salles)
 
 @salles.each do |salle|
-  next if salle["fields"]["entrees_2020"] < 200_000
+  next if salle["fields"]["unite_urbaine_2010"] != "Paris"
 
   puts "Creation du ciné #{salle["fields"]["nom"]}..."
   Cinema.create!(
@@ -94,13 +94,24 @@ session_plannings = [
 
 cinemas = Cinema.all # à voir si on le fait pas sur une sélection de cinémas seulement
 
+# ---- On crée des commentaires type  ----
+
+comments = [
+  "Bon film, allez y les amis, il vaut le coup d'être regardé",
+  "J'ai bien aimé, je pense que je devrais le revoir une deuxième fois pour tout comprendre",
+  "Top, ça faisait un bail que je n'étais pas allé au ciné",
+  "Allez y sans hésiter !",
+  "A voir absolument les potes"
+]
+
 # ---- Création de sessions historiques ----
+
 cinema = Cinema.first
 movies.each do |movie|
   start_at = Time.parse(Date.today.strftime('%y/%m/%d') + " 20:00") - 7.days
   # session = Session.create(movie: movie, cinema: cinema, start_at: start_at)
   User.all.shuffle.first(rand(6..10)).each do |user|
-    Review.create(movie: movie, rating: [3, 4, 5].sample, user: user, comment: ["top", "bien"].sample)
+    Review.create(movie: movie, rating: [2, 3, 4, 5].sample, user: user, comment: comments.sample)
   end
 end
 
