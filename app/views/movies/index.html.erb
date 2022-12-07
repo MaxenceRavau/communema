@@ -30,7 +30,7 @@
               <%= movie.title%>
             </div>
             <div class="details-row25 d-flex justify-content-between">
-              <p class="nb-cinema text-center align-bottom"><%= (1..6).to_a.sample %> cinémas à côté </p>
+              <p class="nb-cinema text-center align-bottom"><%= (2..6).to_a.sample %> cinémas à côté </p>
               <% if Sharing.joins(session: :movie).where(user: current_user.followed_users, movies: { id: movie.id }).count > 0 %>
                   <p class="user-join mr-2"><i class="fa-solid fa-users"></i><%= Sharing.joins(session: :movie).where(user: current_user.followed_users, movies: { id: movie.id }).count %></p>
                 <% end %>

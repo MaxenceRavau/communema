@@ -185,7 +185,7 @@ a{
 
 .selected-movies-title{
   font-weight: bolder !important;
-  border-bottom: #762121 solid 3px;
+  border-bottom: $red solid 3px;
 }
 
 .sorties-semaine-bar{
@@ -262,9 +262,35 @@ font-size: 18px;
 
 .nav-link.home-title.active{
   border: none;
-  border-bottom: #762121 solid 5px !important;
+  border-bottom: $red solid 5px !important;
   background-color: black;
   text-decoration: none;
-  color: #762121;
-  font-size: 1.2em;
+  color: $red;
+}
+
+.nav-link.home-title p{
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.movie-nav-tabs {
+  padding: 0 1.5rem;
+}
+
+.movie-tab {
+  padding: 0.8rem 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  span {
+    font-size: 0.8em;
+    margin-top: 0.2rem;
+  }
+}
+
+.review-title{
+  margin-top: 10px;
+  font-size: 20px;
 }

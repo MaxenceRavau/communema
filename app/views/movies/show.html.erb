@@ -5,7 +5,7 @@
           <div class="movie-show-image">
             <%= cl_image_tag @movie.photo.key if @movie.photo.attached? %>
            </div>
-        <div class="movie-details ml-4">
+        <div class="movie-details ml-4 px-3">
           <h3 id="movie-title-show"><%= @movie.title%></h3>
             <p><%= @movie.release_date.strftime("%d %b %Y")%> </p>
             <p> <%= @movie.duration%> min </p>
@@ -18,44 +18,50 @@
     </div>
 
 
-  <ul class="nav nav-tabs text-white d-flex justify-content-evenly" id="myTab" role="tablist">
+  <ul class="nav nav-tabs text-white d-flex justify-content-between movie-nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-      <button class="nav-link active home-title" id="map-tab" data-bs-toggle="tab" data-bs-target="#map" type="button" role="tab" aria-controls="map" aria-selected="true"><i class="fa-solid fa-map"></i></button>
+      <button class="nav-link home-title active movie-tab" id="synopsis-tab" data-bs-toggle="tab" data-bs-target="#synospis" type="button" role="tab" aria-controls="synospis" aria-selected="false"><i class="fa-solid fa-book"></i><span> Synopsis</span></button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link home-title" id="synopsis-tab" data-bs-toggle="tab" data-bs-target="#synospis" type="button" role="tab" aria-controls="synospis" aria-selected="false"><i class="fa-solid fa-book"></i></i></button>
+      <button class="nav-link home-title movie-tab" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false"><i class="fa-solid fa-star"></i><span> Notes</span></button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link home-title" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false"><i class="fa-solid fa-star"></i></button>
+      <button class="nav-link home-title movie-tab" id="sharings-tab" data-bs-toggle="tab" data-bs-target="#sharings" type="button" role="tab" aria-controls="sharings" aria-selected="true"><i class="fa-solid fa-share-nodes"></i><span> Partages</span></button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link home-title" id="sharings-tab" data-bs-toggle="tab" data-bs-target="#sharings" type="button" role="tab" aria-controls="sharings" aria-selected="true"><i class="fa-solid fa-share-nodes"></i></button>
+      <button class="nav-link home-title movie-tab" id="map-tab" data-bs-toggle="tab" data-bs-target="#map" type="button" role="tab" aria-controls="map" aria-selected="true"><i class="fa-solid fa-map"></i> <span> Séances</span></button>
     </li>
   </ul>
   <div class="tab-content text-white" id="myTabContent">
-    <div class="tab-pane fade show active" id="map" role="tabpanel" aria-labelledby="map-tab">
+    <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
       <div style="width: 100%; height: 440px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
-    <div class="tab-pane fade m-4 text-justify" id="synospis" role="tabpanel" aria-labelledby="synospis-tab">
+    <div class="tab-pane fade m-4 show active text-justify" id="synospis" role="tabpanel" aria-labelledby="synospis-tab">
       <%= @movie.synopsis %>
     </div>
     <div class="tab-pane fade m-2" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
       <div class= "d-flex justify-content-center">
-        <h2> <%= pluralize(@movie.reviews.count, "note", "notes") %> - <%= @movie.rating_for_movie %> de moyenne <h2>
+        <h4 class="review-title"> <%= pluralize(@movie.reviews.count, "note", "notes") %> - <strong><%= @movie.rating_for_movie %></strong> de moyenne <h4>
       </div>
       <% @reviews.each do |review| %>
-        <div class="card-reviews" >
-            <div class= "d-flex flex-row">
+        <div class="card-reviews p-2" >
+            <div class= "d-flex justify-content-between">
+             <div class="d-flex ml-4">
               <%= cl_image_tag review.user.avatar.key, witdh: 30, height: 30, class:"rounded-circle" %>
               <h4 class = "title p-1">@<%= review.user.first_name %></h4>
+             </div>
+             <div class="d-flex ml-4">
+              <i class="fa-solid fa-star ms-3"></i> <%= review.rating %></p>
+             </div>
             </div>
             <div class = "d-flex flex-column">
-              <p><strong>Sa note</strong> : <%= review.rating %></p>
-              <p><strong>Son avis</strong> : "<%= review.comment%>"</p>
+             <div>
+              <p>"<%= review.comment%>"</p>
+            </div>
             </div>
         </div>
       <% end %>
