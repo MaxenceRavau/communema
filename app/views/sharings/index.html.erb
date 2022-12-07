@@ -5,13 +5,13 @@
 
 <div data-controller="home-page-selection">
   <div class="home-title d-flex justify-content-between">
+    <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
+      <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
+      <h2 class="sorties-semaine-bar">Mes amis </h2>
+    </label>
     <label class="selected-movies-title" data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
       <input data-home-page-selection-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
       <h2 class="suggestion-bar">Mes séances</h2>
-    </label>
-    <label data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
-    <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
-      <h2 class="sorties-semaine-bar">Mes amis </h2>
     </label>
   </div>
 
