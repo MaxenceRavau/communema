@@ -168,6 +168,19 @@ friends.each_with_index do |friend, index|
   Review.create(movie: movie_to_share, rating: [4, 5].sample, user: friend, comment: comments[index])
 end
 
+Cinema.all.each do |cinema|
+  session_plannings.sample.each do |starting_hour|
+    # 4.times do |i|
+      puts "Création d'une session"
+      start_at = Time.parse(Date.today.strftime('%y/%m/%d') + " #{starting_hour}")
+      session = Session.create(movie: movie_to_share, cinema: cinema, start_at: start_at)
+      # sessions.push(session) if i == 1
+    end
+  # end
+end
+
+
+
 # ---- Film à partager - end ----
 
 # ---- Sharing random - start ----
@@ -176,9 +189,9 @@ tmdb_ids = ["436270", "505642", "791177", "615952", "944303", "998783", "971594"
 
 shared_movies = Movie.where(tmdb_id: tmdb_ids).sample(4)
 
-shared_movies.each do |shared_movie|
-  chosen_session = Session.create(movie: shared_movie, cinema: Cinema.all.sample, start_at: Time.parse(Date.tomorrow.strftime('%y/%m/%d') + " 20:00"))
-  sharing_creator = max_friends.sample
+shared_movies.each_with_index do |shared_movie, index|
+  chosen_session = Session.create(movie: shared_movie, cinema: Cinema.all.sample, start_at: Time.parse((Date.today + (index + 1).days).strftime('%y/%m/%d') + " 20:00"))
+  sharing_creator = max_friends.shuffle.sample
   chosen_sharing = Sharing.create(session: chosen_session, user: sharing_creator, description: 'Trop envie de voir ce film')
   attendee_users = friends.reject { |user| user == sharing_creator }.sample(rand(1..3))
   attendee_users.each do |attendee_user|
