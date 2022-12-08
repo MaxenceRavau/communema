@@ -22,9 +22,3 @@
               <% end %>
             </div>
         </div>
-
-        <div class="align-items-center d-flex justify-content-between">
-          <% unless sharing.users.include?(current_user) %>
-            <%= link_to "Participer", sharing_attendees_path(sharing), data_turbo_method: :post, data: { action: 'click->sharing-card#join'}, class: "btn-participer" %>
-          <% end %>
-        </div>
