@@ -40,7 +40,11 @@
   </head>
 
   <body>
-        <%= render "shared/flashes" %>
-    <%= yield %>
+    <%= render "shared/flashes" %>
+    <%= render "shared/navbar" %>
+    <div class="page-content">
+      <%= yield %>
+    </div>
+    <%= render "pages/footbar" %>
   </body>
 </html>

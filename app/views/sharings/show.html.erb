@@ -1,5 +1,3 @@
-<%= render "shared/navbar" %>
-
 <div class="container chatroom sharing-chatroom"
   data-controller="sharing-subscription"
   data-sharing-subscription-sharing-id-value="<%= @sharing.id %>"
@@ -38,5 +36,3 @@
     <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>
-
-<%= render "pages/footbar" %>

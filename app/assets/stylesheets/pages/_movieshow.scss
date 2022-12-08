@@ -274,8 +274,19 @@ font-size: 18px;
   }
 }
 
+.nav-link {
+  border: none !important;
+}
+
 .movie-nav-tabs {
   padding: 0 1.5rem;
+  border-color: rgb(126,126,126);
+  li {
+    margin-bottom: -2px;
+  }
+  button, button:hover, button:focus, button:visited, button:active {
+    border: none !important;
+  }
 }
 
 .movie-tab {
