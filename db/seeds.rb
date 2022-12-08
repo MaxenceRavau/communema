@@ -176,17 +176,13 @@ tmdb_ids = ["436270", "505642", "791177", "615952", "944303", "998783", "971594"
 
 shared_movies = Movie.where(tmdb_id: tmdb_ids).sample(4)
 
-chosen_cinema = Cinema.all.sample
-
-chosen_sharings = []
-
 shared_movies.each do |shared_movie|
-  chosen_session = Session.create(movie: shared_movie, cinema: chosen_cinema, start_at: Date.tomorrow)
-  sharing_creator = friends.sample
+  chosen_session = Session.create(movie: shared_movie, cinema: Cinema.all.sample, start_at: Time.parse(Date.tomorrow.strftime('%y/%m/%d') + " 20:00"))
+  sharing_creator = max_friends.sample
   chosen_sharing = Sharing.create(session: chosen_session, user: sharing_creator, description: 'Trop envie de voir ce film')
-  attendee_users = friends.reject { |user| user == sharing_creator }.sample(rand(1..4))
-  attendee_users.each do |user|
-    Attendee.create(user: user, sharing: chosen_sharing)
+  attendee_users = friends.reject { |user| user == sharing_creator }.sample(rand(1..3))
+  attendee_users.each do |attendee_user|
+    Attendee.create(user: attendee_user, sharing: chosen_sharing)
   end
 end
 

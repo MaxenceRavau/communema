@@ -9,7 +9,7 @@ class ImportMovie
   def call
     @movie_details = GetMovieDetails.new(@movie_info.id).call
     puts "Création du #{@movie_info.original_title}..."
-    new_movie = Movie.create(
+    new_movie = Movie.new(
       title: @movie_info.original_title,
       synopsis: @movie_info.overview,
       genre: @movie_details['genres'].first&.fetch('name'),

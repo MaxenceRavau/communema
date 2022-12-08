@@ -9,7 +9,9 @@
           <p> <%= @movie.duration%> min </p>
         <div class="d-flex justify-content-between">
           <p class="market-rating align-text-bottom"><i class="fa-solid fa-star"></i><span class="d-block ml-2"><%= @movie.rating_for_user(current_user)%></span></p>
+          <% if @movie.genre.present? %>
           <p class="genre-tag text-center <%=@movie.genre.downcase%>"><%=@movie.genre%></p>
+          <% end %>
         </div>
       </div>
     </div>
