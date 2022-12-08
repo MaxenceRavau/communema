@@ -93,7 +93,7 @@ session_plannings = [
 
 # ---- On appelle les cinémas qu'on a parsé plus haut dans un array cinemas ----
 
-cinemas = Cinema.all # à voir si on le fait pas sur une sélection de cinémas seulement
+cinemas = Cinema.all
 
 # ---- On crée des commentaires type  ----
 
