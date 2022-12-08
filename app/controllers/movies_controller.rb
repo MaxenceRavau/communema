@@ -16,6 +16,8 @@ class MoviesController < ApplicationController
     @cinemas = @movie.cinemas.geocoded.near([48.8647757, 2.3797682], 5)
     @reviews = @movie.reviews.order(created_at: :desc)
 
+    @sharings = @movie.sharings_of_followed_users(current_user)
+
     @markers = @cinemas.map do |cinema|
       # @sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day)
       {

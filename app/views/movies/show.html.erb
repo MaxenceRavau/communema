@@ -65,20 +65,26 @@
     <% end %>
   </div>
   <div class="tab-pane fade" id="sharings" role="tabpanel" aria-labelledby="sharings-tab">
-    <%@movie.sharings_of_followed_users(current_user).each do |sharing| %>
-      <%= render "sharings/sharing_card_movie_show", sharing: sharing%>
+    <% if @sharings.empty? %>
+      <div class="p-3 ">
+        <i class="opacity-75">Aucun de vos amis n'a prévu d'aller voir ce film prochainement.</i>
+      </div>
+    <% else %>
+      <% @sharings.each do |sharing| %>
+        <%= render "sharings/sharing_card_movie_show", sharing: sharing%>
+      <% end %>
     <% end %>
   </div>
 </div>
 
 <!-- Modal -->
 <% @cinemas.each do |cinema| %>
-<% sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day) %>
-<div class="modal fade" id="cinema-<%= cinema.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content modal-content-map">
-      <%= render "movies/info_window", cinema: cinema, movie: @movie, sessions: sessions, sharing: Sharing.new %>
+  <% sessions = Session.where(cinema: cinema, movie: @movie).where("start_at > ?", Time.now.beginning_of_day).where("start_at < ?", Time.now.end_of_day) %>
+  <div class="modal fade" id="cinema-<%= cinema.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-content-map">
+        <%= render "movies/info_window", cinema: cinema, movie: @movie, sessions: sessions, sharing: Sharing.new %>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
