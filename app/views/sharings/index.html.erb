@@ -2,7 +2,7 @@
   <div class="home-title d-flex justify-content-between">
     <label class="selected-movies-title" data-action="click->home-page-selection#updateContent"  data-home-page-selection-target="movieSortiesLabel">
       <input data-home-page-selection-target="movieSortiesInput" type="radio" id="huey" name="menu-title" value="huey" class="hidden" >
-      <h2 class="sorties-semaine-bar">Mes amis </h2>
+      <h2 class="sorties-semaine-bar">Mes amis</h2>
     </label>
     <label data-action="click->home-page-selection#updateContent" data-home-page-selection-target="movieSuggestionLabel" >
       <input data-home-page-selection-target="movieSuggestionInput" type="radio" id="huey" name="menu-title" value="huey" checked class="hidden" >
@@ -10,18 +10,15 @@
     </label>
   </div>
 
-
   <div class="container hidden-div" data-home-page-selection-target="suggestion">
-     <% @sharings.each do |sharing| %>
-
+    <% @sharings.each do |sharing| %>
       <%= render "sharings/sharing_card", sharing: sharing %>
-
     <% end %>
   </div>
 
-    <div class="container" data-home-page-selection-target="sortiesSemaine">
-      <% @followed_users_sharings.each do |sharing| %>
+  <div class="container" data-home-page-selection-target="sortiesSemaine">
+    <% @followed_users_sharings.each do |sharing| %>
       <%= render "sharings/sharing_card", sharing: sharing %>
-      <% end %>
-    </div>
-
+    <% end %>
+  </div>
+</div>
