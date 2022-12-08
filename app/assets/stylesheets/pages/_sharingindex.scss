@@ -31,14 +31,14 @@
   border-bottom-left-radius: 10px;
 }
 
-.sharing-image-feed {
-  width: 203px;
-  height: 215px;
-  overflow: hidden;
-  img {
-    object-fit: cover;
-  }
-}
+// .sharing-image-feed {
+//   width: 203px;
+//   height: 215px;
+//   overflow: hidden;
+//   img {
+//     object-fit: cover;
+//   }
+// }
 
 .sharing-image .avatar {
   position: absolute;
@@ -97,6 +97,8 @@
   color: white;
   border-radius: 10px;
   padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .date-sharing{
