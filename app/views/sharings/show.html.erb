@@ -13,7 +13,7 @@
 
    <% if @sharing.users.include?(current_user) %>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_review_modal_<%= @sharing.session_id %>">
-          Donner un avis
+          Laisser un avis
       </button>
       <%= render "reviews/modal", movie: @sharing.movie, review: Review.new, modal_id: @sharing.session_id %>
     <% else %>

@@ -8,11 +8,11 @@
 
       <%= simple_form_for [movie, review] do |f| %>
         <div class="modal-body">
-          <%= f.input :comment, placeholder: "Raconter votre expérience" %>
-          <%= f.input :rating, collection: (1..5).to_a, label: "", input_html: {data: {controller: "star-rating"}} %>
+          <%= f.input :comment, label: "Vottre commentaire", placeholder: "Raconter votre expérience" %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Votre un avis", input_html: {data: {controller: "star-rating"}} %>
         </div>
         <div class="modal-footer">
-          <%= f.submit "Ajouter", class: "btn btn-modal" %>
+          <%= f.submit "Ajouter", class: "btn btn-primary" %>
           <%# <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Back</button> %>
         </div>
       <% end %>
