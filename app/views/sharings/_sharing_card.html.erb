@@ -9,8 +9,8 @@
         <div>
           <div class="mb-1 d-flex align-items-baseline justify-content-between">
             <strong><%= sharing.movie.title%></strong>
-            <div>
-              <i class="fa-regular fa-star"></i> <%= sharing.movie.reviews.average(:rating).round(2) %>
+            <div class="star-width">
+              <i class="fa-regular fa-star"></i> <%= sharing.movie.reviews.average(:rating).round(1) %>
             </div>
           </div>
         </div>
