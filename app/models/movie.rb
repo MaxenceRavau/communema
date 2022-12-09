@@ -12,11 +12,11 @@ class Movie < ApplicationRecord
     followee_reviews = Review.where(user: user.followed_users, movie: self)
     return rand(3.5..4.8).round(1) unless followee_reviews.present?
 
-    followee_reviews.average(:rating)&.round(2)
+    followee_reviews.average(:rating)&.round(1)
   end
 
   def rating_for_movie
-    reviews.average(:rating)&.round(2)
+    reviews.average(:rating)&.round(1)
   end
 
   def sharings_of_followed_users(user)
