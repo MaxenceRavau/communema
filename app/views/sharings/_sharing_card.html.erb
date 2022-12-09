@@ -22,9 +22,14 @@
         </div>
         <div class="align-items-center d-flex justify-content-between sharing-icon">
           <div class="align-items-center d-flex font-size-user">
-            <% sharing.users.each do |user| %>
+            <% sharing.users.first(3).each do |user| %>
               <%= cl_image_tag user.avatar.key, width:30, height: 30, class: "d-inline rounded-circle" %>
             <% end %>
+            
+            <% if sharing.users.count > 3 %>
+              <div class="others"><span>+<%= sharing.users.count - 3 %></span></div>
+            <% end %>
+            
           </div>
           <div class="align-items-center d-flex justify-content-between">
             <% unless sharing.users.include?(current_user) %>

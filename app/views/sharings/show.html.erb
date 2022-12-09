@@ -6,8 +6,11 @@
   <%= render "sharings/sharing_card_message", sharing: @sharing %>
 
   <div class="d-flex align-items-center justify-content-center sharing-avatars">
-    <% @sharing.users.each do |user| %>
+    <% @sharing.users.first(5).each do |user| %>
       <%= cl_image_tag user.avatar.key, width:50, height: 50, class: "d-inline rounded-circle" %>
+    <% end %>
+    <% if @sharing.users.count > 5 %>
+      <div class="others"><span>+<%= @sharing.users.count - 5 %></span></div>
     <% end %>
   </div>
 
