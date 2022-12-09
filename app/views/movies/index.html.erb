@@ -17,7 +17,7 @@
          <div class="movie-image">
            <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
         </div>
-        <div class="movie-details">
+        <div class="movie-details h-100">
            <div class="details-row25 group-icon d-flex justify-content-between">
               <p class="market-rating align-text-bottom"><i class="fa-solid fa-star"></i><span class="d-block ml-2"><%= movie.rating_for_user(current_user)%></span></p>
               <% if movie.genre.present? %>
@@ -47,7 +47,7 @@
          <div class="movie-image">
            <%= cl_image_tag movie.photo.key if movie.photo.attached? %>
         </div>
-        <div class="movie-details">
+        <div class="movie-details h-100">
            <div class="details-row25 group-icon d-flex justify-content-between">
               <p class="market-rating align-text-bottom">
                 <% if movie.rating_for_user(current_user).present? %>

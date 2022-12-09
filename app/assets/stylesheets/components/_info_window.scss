@@ -24,9 +24,9 @@
 }
 
 .modal-content-map {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  // position: relative;
+  // display: flex;
+  // flex-direction: column;
   width: 100%;
   color: white;
   pointer-events: auto;
@@ -34,7 +34,7 @@
   background-clip: padding-box;
   border-radius: var(--bs-modal-border-radius);
   outline: 0;
-  position: relative;
+  // position: relative;
   top: 80px;
   padding: 22px;
 }
