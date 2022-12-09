@@ -20,7 +20,9 @@
         <div class="movie-details">
            <div class="details-row25 group-icon d-flex justify-content-between">
               <p class="market-rating align-text-bottom"><i class="fa-solid fa-star"></i><span class="d-block ml-2"><%= movie.rating_for_user(current_user)%></span></p>
+              <% if movie.genre.present? %>
               <p class="genre-tag text-center <%=movie.genre.downcase%>"><%= movie.genre%></p>
+              <% end %>
             </div>
             <div class="details-row50 texte-white">
               <%= movie.title%>
@@ -52,7 +54,9 @@
                   <i class="fa-solid fa-star"></i><span class="d-block ml-2"><%= movie.rating_for_user(current_user) %></span>
                 <% end %>
               </p>
-              <p class="genre-tag text-center <%=movie.genre.downcase%>"><%= movie.genre%></p>
+              <% if movie.genre.present? %>
+                <p class="genre-tag text-center <%=movie.genre.downcase%>"><%= movie.genre%></p>
+              <% end %>
             </div>
             <div class="details-row50 texte-white">
               <%= movie.title%>

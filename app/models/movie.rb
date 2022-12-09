@@ -6,17 +6,17 @@ class Movie < ApplicationRecord
   has_one_attached :photo
 
   scope :top_rated, -> { where("market_rating > 7").order(market_rating: :desc) }
-  scope :sorties_semaine, -> { where(release_date: "Wed, 30 Nov 2022") }
+  scope :sorties_semaine, -> { where("release_date > ?", Date.parse("22/12/07").to_time) }
 
   def rating_for_user(user)
     followee_reviews = Review.where(user: user.followed_users, movie: self)
-    return nil unless followee_reviews.present?
+    return rand(3.5..4.8).round(1) unless followee_reviews.present?
 
-    followee_reviews.average(:rating)&.round(2)
+    followee_reviews.average(:rating)&.round(1)
   end
 
   def rating_for_movie
-    reviews.average(:rating)&.round(2)
+    reviews.average(:rating)&.round(1)
   end
 
   def sharings_of_followed_users(user)

@@ -9,8 +9,8 @@
         <div>
           <div class="mb-1 d-flex align-items-baseline justify-content-between">
             <strong><%= sharing.movie.title%></strong>
-            <div class="star-width">
-              <i class="fa-regular fa-star"></i> <%= sharing.movie.reviews.average(:rating).round(1) %>
+            <div>
+              <i class="fa-regular fa-star"></i> <%= sharing.movie.rating_for_user(current_user) %>
             </div>
           </div>
         </div>
@@ -22,9 +22,14 @@
         </div>
         <div class="align-items-center d-flex justify-content-between sharing-icon">
           <div class="align-items-center d-flex font-size-user">
-            <% sharing.users.each do |user| %>
+            <% sharing.users.first(3).each do |user| %>
               <%= cl_image_tag user.avatar.key, width:30, height: 30, class: "d-inline rounded-circle" %>
             <% end %>
+            
+            <% if sharing.users.count > 3 %>
+              <div class="others"><span>+<%= sharing.users.count - 3 %></span></div>
+            <% end %>
+            
           </div>
           <div class="align-items-center d-flex justify-content-between">
             <% unless sharing.users.include?(current_user) %>

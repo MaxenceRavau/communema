@@ -6,14 +6,17 @@
   <%= render "sharings/sharing_card_message", sharing: @sharing %>
 
   <div class="d-flex align-items-center justify-content-center sharing-avatars">
-    <% @sharing.users.each do |user| %>
+    <% @sharing.users.first(5).each do |user| %>
       <%= cl_image_tag user.avatar.key, width:50, height: 50, class: "d-inline rounded-circle" %>
+    <% end %>
+    <% if @sharing.users.count > 5 %>
+      <div class="others"><span>+<%= @sharing.users.count - 5 %></span></div>
     <% end %>
   </div>
 
    <% if @sharing.users.include?(current_user) %>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_review_modal_<%= @sharing.session_id %>">
-          Donner un avis
+          Laisser un avis
       </button>
       <%= render "reviews/modal", movie: @sharing.movie, review: Review.new, modal_id: @sharing.session_id %>
     <% else %>

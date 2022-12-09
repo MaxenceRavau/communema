@@ -77,10 +77,12 @@
 .movie-details{
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   width: 100%;
   color: white;
   flex-grow: 1;
+  height: 150px;
 }
 
 .detail-infos{
