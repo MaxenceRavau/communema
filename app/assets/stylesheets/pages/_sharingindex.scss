@@ -86,8 +86,31 @@
 
 .sharing-icon {
   font-size: 27px;
+  .font-size-user > * {
+    margin-left: -2px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
   & span {
     font-size: 18px;
+  }
+  .others {
+    background: rgba(0,0,0,0.9);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    font-size: 0.9rem;
+    font-weight: bolder;
+    span {
+      position: relative;
+      opacity: 0.8;
+      left: -2px;
+    }
   }
 }
 
